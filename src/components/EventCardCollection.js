@@ -37,7 +37,7 @@ const EventCardCollection = props => {
   };
 
   return (
-    <div className="flex flex-row w-screen overflow-x-scroll pb-4">
+    <div className="flex flex-col items-center w-screen overflow-x-scroll pb-4">
       {propSample.data.events.map(event => {
           return <EventCard event={event} key={event.id}/>
       })}

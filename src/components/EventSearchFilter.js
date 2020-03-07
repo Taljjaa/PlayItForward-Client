@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 // This functional component is the filter for searching events
 // Layout:
-// ... TBD
+// Form ( Input Row 1, Input Row 2, Submit )
 const EventSearchFilter = props => {
   const [eventName, setEventName] = useState("");
   const [nonprofitName, setNonprofitName] = useState("");
@@ -11,8 +11,10 @@ const EventSearchFilter = props => {
   const [eventEndDate, setEventEndDate] = useState("");
 
   return (
-    <div className="bg-blue-300 w-screen px-6 pb-2">
+    <div className="bg-blue-300 rounded-lg mx-2 my-2 px-4 pb-2 shadow-lg">
+      {/* Form Start */}
       <form>
+        {/* Input Row 1 */}
         <div className="flex flex-row justify-between pb-1">
           <div>
             <label className="block text-blue-800 pl-1" for="inline-full-name">
@@ -23,7 +25,9 @@ const EventSearchFilter = props => {
               id="event-name"
               type="text"
               value={eventName}
-              onChange={(e)=>{setEventName(e.target.value)}}
+              onChange={e => {
+                setEventName(e.target.value);
+              }}
             />
           </div>
           <div>
@@ -35,12 +39,16 @@ const EventSearchFilter = props => {
               id="nonprofit"
               type="text"
               value={nonprofitName}
-              onChange={(e)=>{setNonprofitName(e.target.value)}}
+              onChange={e => {
+                setNonprofitName(e.target.value);
+              }}
             />
           </div>
         </div>
+
+        {/* Input Row 2 */}
         <div className="flex flex-row justify-between">
-        <div>
+          <div>
             <label className="block text-blue-800 pl-1" for="inline-full-name">
               Start Date
             </label>
@@ -49,7 +57,9 @@ const EventSearchFilter = props => {
               id="start-date"
               type="text"
               value={eventStartDate}
-              onChange={(e)=>{setEventStartDate(e.target.value)}}
+              onChange={e => {
+                setEventStartDate(e.target.value);
+              }}
             />
           </div>
           <div>
@@ -61,9 +71,19 @@ const EventSearchFilter = props => {
               id="end-date"
               type="text"
               value={eventEndDate}
-              onChange={(e)=>{setEventEndDate(e.target.value)}}
+              onChange={e => {
+                setEventEndDate(e.target.value);
+              }}
             />
           </div>
+        </div>
+        <div className="flex flex-row justify-center pt-2">
+          <button
+            className="shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold py-1 px-4 rounded"
+            type="button"
+          >
+            Search
+          </button>
         </div>
       </form>
     </div>
