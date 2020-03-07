@@ -44,9 +44,9 @@ const Navbar = () => {
   return (
     <header className="bg-gray-900">
       {/* Header Links */}
-      <div className="flex flex-row justify-between items-center px-4 py-2">
+      <div className="flex flex-row items-center px-6 py-2">
         <HamburgerOptions />
-        <div>
+        <div className="flex justify-end w-full">
           {loggedIn ? (
             expanded ? (
               hamburgerCollapseIcon

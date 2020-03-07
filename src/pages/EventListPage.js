@@ -19,7 +19,7 @@ const [filter, setFilter] = useState({
 })
 
     return (
-        <div className="flex flex-col w-screen">
+        <div className="flex flex-col h-screen w-screen">
             <Navbar />
             <EventSearchFilter setFilter={setFilter}/>
         </div>
