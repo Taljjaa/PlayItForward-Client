@@ -17,7 +17,7 @@ const EventSearchFilter = props => {
         {/* Input Row 1 */}
         <div className="flex flex-row justify-between pb-1">
           <div>
-            <label className="block text-blue-800 pl-1" for="inline-full-name">
+            <label className="block text-blue-800 pl-1">
               Event Name
             </label>
             <input
@@ -31,7 +31,7 @@ const EventSearchFilter = props => {
             />
           </div>
           <div>
-            <label className="block text-blue-800 pl-1" for="inline-full-name">
+            <label className="block text-blue-800 pl-1">
               Nonprofit
             </label>
             <input
@@ -49,7 +49,7 @@ const EventSearchFilter = props => {
         {/* Input Row 2 */}
         <div className="flex flex-row justify-between">
           <div>
-            <label className="block text-blue-800 pl-1" for="inline-full-name">
+            <label className="block text-blue-800 pl-1">
               Start Date
             </label>
             <input
@@ -63,7 +63,7 @@ const EventSearchFilter = props => {
             />
           </div>
           <div>
-            <label className="block text-blue-800 pl-1" for="inline-full-name">
+            <label className="block text-blue-800 pl-1">
               End Date
             </label>
             <input
