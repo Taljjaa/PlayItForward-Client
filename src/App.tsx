@@ -5,6 +5,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 // Custom Imports
 import LandingPage from './pages/LandingPage'
 
+// This is the main app component
 function App() {
    return (
       <Router>
