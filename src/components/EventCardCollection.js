@@ -9,13 +9,15 @@ import {data} from '../pages/mock-data'
 // Layout:
 // List of Events
 const EventCardCollection = props => {
-  // THIS IS PLACEHOLDER DATA TO STAND IN FOR PROPS
+
+  // THIS ISMOCK DATA TO STAND IN FOR PROPS
   const propSample = {
     data: data
   };
 
   return (
     <div className="flex flex-col items-center w-screen overflow-x-scroll pb-4">
+      {/* List Of Events from Props */}
       {propSample.data.events.map(event => {
           return <EventCard event={event} key={event.id}/>
       })}
