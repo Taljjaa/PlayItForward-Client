@@ -1,4 +1,4 @@
-# PlayItForward
+# Play It Forward
 
 ## Motivation
 
