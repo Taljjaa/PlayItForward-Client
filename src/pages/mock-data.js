@@ -1,4 +1,4 @@
-export const data = {
+export const eventData = {
     events: [
       {
         id: 1,
@@ -52,3 +52,7 @@ export const data = {
       }, 
     ]
   };
+
+  export const nonprofitData = {
+
+  }

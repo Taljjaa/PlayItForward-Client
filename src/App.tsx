@@ -12,7 +12,7 @@ function App() {
    return (
       <Router>
          <div className="bg-blue-200 text-blue-900">
-            <NonprofitListPage />
+            <EventListPage />
          </div>
       </Router>
    );

@@ -5,9 +5,6 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import EventSearchFilter from "../components/EventSearchFilter";
 import EventCardCollection from "../components/EventCardCollection";
-import notFoundGif from "../media/animations/event-not-found.gif";
-import { data } from "./mock-data";
-import pifLogo from "../media/icons/pif-logo.png";
 
 // This is a functional component that displays the event list page
 // Layout:
@@ -20,11 +17,6 @@ const EventListPage = props => {
     dateStart: "",
     dateEnd: ""
   });
-
-  // THIS IS MOCK DATA, TO BE REMOVED
-  const fetchStateSample = {
-    data: data
-  };
 
   return (
     <div className="flex flex-col w-screen h-screen">
@@ -39,18 +31,7 @@ const EventListPage = props => {
         <h1 className="event-list-pg-header font-bold text-xl">
           EVENTS LISTED
         </h1>
-        {Object.keys(fetchStateSample).length !== 0 ? (
-          <div className="event-list-pg-events-container flex justify-center items-center">
-            <EventCardCollection />
-          </div>
-        ) : (
-          <div className="event-list-page-image-container flex flex-col justify-center items-center">
-            <img className="h-64" src={notFoundGif} alt="" />
-            <h2 className="block font-bold text-lg">
-              Oops! Couldn't Find Any Events!
-            </h2>
-          </div>
-        )}
+        <EventCardCollection />
       </div>
     </div>
   );
