@@ -54,5 +54,62 @@ export const eventData = {
   };
 
   export const nonprofitData = {
-
+    nonprofits: [
+      {
+      contact: "Hav Ingphawn",
+      description: "Gerbils are fantastic. The only downside is their life span. But maybe if you love them enough, the hamsters will cease to abide by the rules of longevity. Maybe, just maybe, they might stop following rules at all. Maybe love is the answer. Hamster love. Gerbil love. Human love.",
+      displayName: "Gerbils Are People",
+      logo: "someurl.com/gif",
+      mission: "Forcing People To Accept Gerbils Since 1745",
+      username: "gap"
+    },
+    {
+      contact: "Hav Ingphawn",
+      description: "Gerbils are fantastic. The only downside is their life span. But maybe if you love them enough, the gerbils will cease to abide by the rules of longevity. Maybe, just maybe, they might stop following rules at all. Maybe love is the answer. Diamonds are forever, but Gerbil love is FOREVER.",
+      displayName: "Gerbils Are People",
+      logo: "someurl.com/gif",
+      mission: "Forcing People To Accept Gerbils Since 1745",
+      username: "gap"
+    },
+    {
+      contact: "Hav Ingphawn",
+      description: "Gerbils are fantastic. The only downside is their life span. But maybe if you love them enough, the gerbils will cease to abide by the rules of longevity. Maybe, just maybe, they might stop following rules at all. Maybe love is the answer. Diamonds are forever, but Gerbil love is FOREVER.",
+      displayName: "Gerbils Are People",
+      logo: "someurl.com/gif",
+      mission: "Forcing People To Accept Gerbils Since 1745",
+      username: "gap"
+    },
+    {
+      contact: "Hav Ingphawn",
+      description: "Gerbils are fantastic. The only downside is their life span. But maybe if you love them enough, the gerbils will cease to abide by the rules of longevity. Maybe, just maybe, they might stop following rules at all. Maybe love is the answer. Diamonds are forever, but Gerbil love is FOREVER.",
+      displayName: "Gerbils Are People",
+      logo: "someurl.com/gif",
+      mission: "Forcing People To Accept Gerbils Since 1745",
+      username: "gap"
+    },
+    {
+      contact: "Hav Ingphawn",
+      description: "Gerbils are fantastic. The only downside is their life span. But maybe if you love them enough, the gerbils will cease to abide by the rules of longevity. Maybe, just maybe, they might stop following rules at all. Maybe love is the answer. Diamonds are forever, but Gerbil love is FOREVER.",
+      displayName: "Gerbils Are People",
+      logo: "someurl.com/gif",
+      mission: "Forcing People To Accept Gerbils Since 1745",
+      username: "gap"
+    },
+    {
+      contact: "Hav Ingphawn",
+      description: "Gerbils are fantastic. The only downside is their life span. But maybe if you love them enough, the gerbils will cease to abide by the rules of longevity. Maybe, just maybe, they might stop following rules at all. Maybe love is the answer. Diamonds are forever, but Gerbil love is FOREVER.",
+      displayName: "Gerbils Are People",
+      logo: "someurl.com/gif",
+      mission: "Forcing People To Accept Gerbils Since 1745",
+      username: "gap"
+    },
+    {
+      contact: "Hav Ingphawn",
+      description: "Gerbils are fantastic. The only downside is their life span. But maybe if you love them enough, the gerbils will cease to abide by the rules of longevity. Maybe, just maybe, they might stop following rules at all. Maybe love is the answer. Diamonds are forever, but Gerbil love is FOREVER.",
+      displayName: "Gerbils Are People",
+      logo: "someurl.com/gif",
+      mission: "Forcing People To Accept Gerbils Since 1745",
+      username: "gap"
+    },
+  ]
   }

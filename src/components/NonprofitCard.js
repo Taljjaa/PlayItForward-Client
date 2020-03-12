@@ -14,10 +14,8 @@ const NonprofitCard = props => {
       </div>
       {/* Event Information */}
       <div className="flex flex-col pl-2 bg-blue-400 w-64 h-24">
-        <h1 className="text-s">{props.event.nonprofit.displayName}</h1>
-        <h1 className="text font-semibold">{props.event.title}</h1>
-        <h1 className="text-s">{props.event.date}</h1>
-        <h1 className="text-xs truncate">{props.event.address}</h1>
+        <h1 className="text-s font-bold">{props.data.displayName}</h1>
+        <h1 className="text-xs">{props.data.mission}</h1>
       </div>
     </div>
   );

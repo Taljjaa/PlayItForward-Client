@@ -11,7 +11,9 @@ import {nonprofitData} from '../pages/mock-data'
 const NonprofitCardCollection = (props) => {
     return (
         <div className="flex flex-col flex-grow items-center w-full">
-            Cards here
+            {nonprofitData.nonprofits.map(el => {
+                return <NonprofitCard key={Math.random()} data={el} />
+            })}
         </div>
     );
 };

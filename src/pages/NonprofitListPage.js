@@ -3,13 +3,15 @@ import React from 'react';
 
 // Custom imports
 import Navbar from '../components/Navbar'
-import NonprofitGrid from '../components/NonprofitGrid'
+import NonprofitSearchFilter from '../components/NonprofitSearchFilter'
+import NonprofitCardCollection from '../components/NonprofitCardCollection'
 
 const NonprofitListPage = () => {
     return (
         <div className="nonprofit-list-pg flex flex-col w-screen h-screen">
             <Navbar />
-            <NonprofitGrid />
+            <NonprofitSearchFilter />
+            <NonprofitCardCollection />
         </div>
     );
 };
