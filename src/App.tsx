@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import EventListPage from './pages/EventListPage';
 import NonprofitListPage from './pages/NonprofitListPage'
+import AboutPage from './pages/AboutPage'
 
 // This is the main app component
 function App() {
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route path="/nonprofits">
             <NonprofitListPage />
+          </Route>
+          <Route path="/about">
+            <AboutPage />
           </Route>
          </div>
       </Router>
