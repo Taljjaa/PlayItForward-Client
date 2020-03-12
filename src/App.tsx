@@ -1,11 +1,11 @@
 // React Imports
 import React from 'react';
-import {BrowserRouter as Router} from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 // Custom Imports
-import LandingPage from './pages/LandingPage'
+import LandingPage from './pages/LandingPage';
 import EventListPage from './pages/EventListPage';
-import NonprofitListPage from './pages/NonprofitListPage'
+import NonprofitListPage from './pages/NonprofitListPage';
 
 // This is the main app component
 function App() {
