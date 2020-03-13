@@ -4,25 +4,18 @@ import React from 'react';
 // Custom Imports
 import pifLogo from '../media/icons/pif-logo.png'; // PLACEHOLDER
 
+import { getThreeEvents_event } from '../generated/getThreeEvents';
+
 // This is a re-usable Card component for event info
 // Layout:
 // Event Logo, Event Information
 
 interface Props {
-  event: {
-    id: number;
-    title: string;
-    date: string;
-    image: string;
-    location: string;
-    nonprofit: {
-      display_name: string;
-      logo: string;
-    };
-  };
+  event: getThreeEvents_event;
 }
 
-const EventCard = (props: Props) => {
+const EventCard = ({ event }: Props) => {
+  const { title, location, date, nonprofit } = event;
   return (
     <div className="flex flex-row justify-end pb-2">
       {/* Event Logo */}
@@ -31,10 +24,10 @@ const EventCard = (props: Props) => {
       </div>
       {/* Event Information */}
       <div className="flex flex-col pl-2 bg-blue-400 w-64 h-24">
-        <h1 className="text-s">{props.event.nonprofit['display_name']}</h1>
-        <h1 className="text font-semibold">{props.event.title}</h1>
-        <h1 className="text-s">{props.event.date}</h1>
-        <h1 className="text-xs truncate">{props.event.location}</h1>
+        <h1 className="text-s">{nonprofit['display_name']}</h1>
+        <h1 className="text font-semibold">{title}</h1>
+        <h1 className="text-s">{date}</h1>
+        <h1 className="text-xs truncate">{location}</h1>
       </div>
     </div>
   );
