@@ -15,11 +15,11 @@ export interface getThreeEvents_event_nonprofit {
 
 export interface getThreeEvents_event {
   __typename: 'event';
-  image: string | null;
+  image: string;
   id: number;
   title: string;
   date: any;
-  location: string | null;
+  location: string;
   /**
    * An object relationship
    */
