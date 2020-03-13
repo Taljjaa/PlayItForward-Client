@@ -17,6 +17,10 @@ interface Event {
   title: string;
   date: string;
   location: string;
+  nonprofit: {
+    display_name: string;
+    logo: string;
+  };
 }
 
 //graphql query object limit 3 returns 3 events
@@ -47,7 +51,7 @@ const EventCardCollection = () => {
         <div className="event-list-pg-events-container flex justify-center items-center">
           <div className="flex flex-col items-center w-screen pb-4">
             {/* List Of Events from Props */}
-            {data.event.map(event => {
+            {data.event.map((event: Event) => {
               return <EventCard event={event} key={event.id} />;
             })}
           </div>
