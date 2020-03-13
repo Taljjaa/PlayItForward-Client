@@ -11,14 +11,13 @@ import notFoundGif from '../media/animations/event-not-found.gif';
 // Layout:
 // List of Events
 
-// interface Event {
-//   id: number,
-//   image: string,
-//   title: string,
-//   date: string,
-//   location: string,
-
-// }
+interface Event {
+  id: number;
+  image: string;
+  title: string;
+  date: string;
+  location: string;
+}
 
 //graphql query object limit 3 returns 3 events
 const GET_THREE_EVENTS = gql`
