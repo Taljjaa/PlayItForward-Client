@@ -35,7 +35,7 @@
     "build:styles": "postcss src/tailwind.css -o src/styles.css",
     "prebuild": "npm run build:styles",
     "prestart": "npm run build:styles",
-    "generate": "graphql-codegen --config codegen.yml"
+    "apollo:generate": "apollo codegen:generate --target typescript --excludes=node_modules/* --includes=**/*.tsx --endpoint https://play-it-forward-graphql.herokuapp.com/v1/graphql --target typescript --tagName=gql --outputFlat src/generated"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,6 +54,11 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.13.0",
+    "@graphql-codegen/introspection": "1.13.0",
+    "@graphql-codegen/typescript": "1.13.0",
+    "@graphql-codegen/typescript-operations": "1.13.0",
+    "@graphql-codegen/typescript-react-apollo": "1.13.0",
+    "@graphql-codegen/typescript-resolvers": "1.13.0",
     "@types/graphql": "^14.5.0",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
@@ -66,12 +71,7 @@
     "postcss-cli": "^7.1.0",
     "prettier": "^1.19.1",
     "tailwindcss": "^1.2.0",
-    "typescript": "^3.7.5",
-    "@graphql-codegen/typescript": "1.13.0",
-    "@graphql-codegen/typescript-operations": "1.13.0",
-    "@graphql-codegen/typescript-resolvers": "1.13.0",
-    "@graphql-codegen/typescript-react-apollo": "1.13.0",
-    "@graphql-codegen/introspection": "1.13.0"
+    "typescript": "^3.7.5"
   },
   "husky": {
     "hooks": {
@@ -81,7 +81,7 @@
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write",
-      "eslint src/**/*.{js,tsx} --fix-dry-run"
+      "eslint src/**/*.tsx --fix-dry-run"
     ]
   }
 }
