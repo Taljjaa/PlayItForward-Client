@@ -12,7 +12,6 @@ import { eventData } from '../pages/mock-data';
 // Layout:
 // List of Events
 
-
 //graphql query object limit 3 returns 3 events
 const GET_THREE_EVENTS = gql`
    query getThreeEvents {
@@ -31,13 +30,13 @@ const GET_THREE_EVENTS = gql`
 `;
 
 const EventCardCollection = () => {
-  //useQuery hook takes our gql query and makes a request to the backend
-  //the return value is held in data
+   //useQuery hook takes our gql query and makes a request to the backend
+   //the return value is held in data
    const { loading, error, data } = useQuery(GET_THREE_EVENTS);
    if (loading) return null;
    return (
       <div>
-         {data.event.length !== 0 ? (
+         {!error ? (
             <div className="event-list-pg-events-container flex justify-center items-center">
                <div className="flex flex-col items-center w-screen pb-4">
                   {/* List Of Events from Props */}
