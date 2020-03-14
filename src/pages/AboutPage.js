@@ -4,8 +4,8 @@ import React from 'react';
 // Custom imports
 import Navbar from '../components/Navbar'
 import newsImage from '../media/animations/news-bird.gif'
-import trophyGif from "../media/animations/trophy-rotate.gif";
 import contributeImage from '../media/animations/contribute-piggy.gif'
+import GifButton from '../components/GifButton'
 
 const AboutPage = () => {
     return (
@@ -19,9 +19,13 @@ const AboutPage = () => {
                     volunteering experience. This is currently a work in progress, so stay
                     tuned to see where it goes!
                 </p>
-                <div className="flex justify-center w-screen pt-8">
-                    <img className="h-32 w-auto px-4" src={contributeImage} alt=""/>
-                    <img className="h-32 w-auto px-4" src={newsImage} alt="" />
+                <div className="flex justify-center w-screen pt-8 pb-4">
+                    <a href=""><GifButton image={contributeImage} caption="Help Us Out"/></a>
+                    <a href=""><GifButton image={newsImage} caption="Read About PIF"/></a>
+                </div>
+                <div className="flex justify-center w-screen">
+                    <a href="https://jenniferwilliams.dev/"><GifButton image={newsImage} caption="About Jen"/></a>
+                    <a href="https://shawnhuangfernandes.netlify.com"><GifButton image={contributeImage} caption="About Shawn"/></a>
                 </div>
             </div>
         </div>
