@@ -9,7 +9,7 @@ import GifButton from "../components/GifButton";
 
 // Function component that displays general info about the program
 // Layout:
-// Navbar, Text Blurb, GifButtons
+// Navbar, Text Blurb, GifButtons!
 const AboutPage = () => {
   return (
     <div className="flex flex-col w-screen h-screen overflow-scroll">
