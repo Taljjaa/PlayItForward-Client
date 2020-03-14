@@ -12,7 +12,7 @@ import GifButton from "../components/GifButton";
 // Navbar, Text Blurb, GifButtons
 const AboutPage = () => {
   return (
-    <div className="flex flex-col w-screen h-screen">
+    <div className="flex flex-col w-screen h-screen overflow-scroll">
       {/* Navbar */}
       <Navbar />
 
@@ -28,7 +28,7 @@ const AboutPage = () => {
         </p>
 
         {/* GifButtons */}
-        <div className="flex justify-center w-screen pt-8 pb-4">
+        <div className="flex justify-center w-screen pt-8 pb-4 overflow-scroll">
           <a
             href="https://github.com/Taljjaa/PlayItForward-Client"
             target="_blank"
