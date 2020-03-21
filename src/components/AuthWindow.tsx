@@ -21,7 +21,7 @@ const AuthWindow = () => {
           Signup
         </div>
       </div>
-      {loginTabbed ? <LoginDialogueBox /> : <SignUpDialogueBox />}
+      {loginTabbed ? <LoginDialogueBox isVolunteer={isVolunteer} setIsVolunteer={setIsVolunteer}/> : <SignUpDialogueBox isVolunteer={isVolunteer} setIsVolunteer={setIsVolunteer}/>}
     </div>
   );
 };
