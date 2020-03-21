@@ -7,6 +7,7 @@ import LandingPage from './pages/LandingPage';
 import EventListPage from './pages/EventListPage';
 import NonprofitListPage from './pages/NonprofitListPage';
 import AboutPage from './pages/AboutPage'
+import AuthPage from './pages/AuthPage'
 
 //Imports from Apollo
 import ApolloClient from 'apollo-boost';
@@ -29,15 +30,19 @@ function App() {
             <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route path="/events">
+          <Route exact path="/events">
             <EventListPage />
           </Route>
-          <Route path="/nonprofits">
+          <Route exact path="/nonprofits">
             <NonprofitListPage />
           </Route>
-          <Route path="/about">
+          <Route exact path="/about">
             <AboutPage />
-          </Route>            </div>
+          </Route>
+          <Route exact path="/auth">
+            <AuthPage />
+          </Route>              
+          </div>
          </ApolloProvider>
       </Router>
    );
