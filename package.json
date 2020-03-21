@@ -35,7 +35,7 @@
     "build:styles": "postcss src/tailwind.css -o src/styles.css",
     "prebuild": "npm run build:styles",
     "prestart": "npm run build:styles",
-    "apollo:generate": "apollo codegen:generate --target typescript --excludes=node_modules/* --includes=**/*.tsx --endpoint https://play-it-forward-graphql.herokuapp.com/v1/graphql --target typescript --tagName=gql --outputFlat src/generated"
+    "apollo:generate": "apollo codegen:generate --target typescript --excludes=node_modules/* --includes=**/*.tsx --endpoint https://play-it-forward-graphql.herokuapp.com/v1/graphql --tagName=gql --outputFlat src/generated"
   },
   "eslintConfig": {
     "extends": "react-app"
