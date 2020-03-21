@@ -11,13 +11,17 @@ const AuthWindow = () => {
   const [loginTabbed, setLoginTabbed] = useState(true);
   const [isVolunteer, setIsVolunteer] = useState(true);
 
+  const tabHeaderClass = "flex text-white justify-center items-center w-6/12 h-12 ";
+  const selected = "bg-blue-500";
+  const unSelected = "bg-blue-600";
+
   return (
     <div className="auth-page-window flex flex-col h-80 w-9/12 bg-red-400">
       <div className="flex">
-        <div className="flex justify-center items-center bg-green-300 w-6/12 h-12">
+        <div className={tabHeaderClass + (loginTabbed ? selected : unSelected)}>
           Login
         </div>
-        <div className="flex justify-center items-center bg-yellow-400 w-6/12 h-12">
+        <div className={tabHeaderClass + (loginTabbed ? unSelected : selected)}>
           Signup
         </div>
       </div>
