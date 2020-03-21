@@ -10,7 +10,7 @@ import NavbarOptions from "./NavbarOptions";
 const Navbar = () => {
   // STATE: Whether menu options are visible or not
   const [expanded, setExpanded] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   // METHOD: click handler for toggling menu visibility
   const onHamburgerClick = e => {
@@ -44,7 +44,7 @@ const Navbar = () => {
   return (
     <header className="bg-gray-900">
       {/* Header Links */}
-      <div className="flex flex-row items-center px-6 py-2">
+      <div className="flex items-center px-6 py-2">
         <NavbarOptions />
         <div className="flex justify-end w-full">
           {loggedIn ? (
@@ -56,7 +56,7 @@ const Navbar = () => {
           ) : (
             <a
               className="font-semibold rounded px-2 hover:bg-blue-700 text-blue-400 underline"
-              href="#"
+              href="/auth"
             >
               Login
             </a>

@@ -28,7 +28,7 @@ const AboutPage = () => {
         </p>
 
         {/* GifButtons */}
-        <div className="flex justify-center w-screen pt-8 pb-4 overflow-scroll">
+        <div className="flex justify-center w-screen pt-4 pb-2">
           <a
             href="https://github.com/Taljjaa/PlayItForward-Client"
             target="_blank"
