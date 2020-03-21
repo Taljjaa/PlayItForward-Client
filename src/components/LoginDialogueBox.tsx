@@ -28,7 +28,21 @@ const LoginDialogueBox = (props: DialogueProps) => {
             <p className="text-center text-white font-semibold text-xl pb-4">Welcome Back!</p>
             <input className="text-center bg-white focus:outline-none focus:shadow-outline border border-gray-300 mb-4" placeholder="Enter Username" value={username} onChange={onChangeUsername}/>
             <input className="text-center bg-white focus:outline-none focus:shadow-outline border border-gray-300 mb-4" type="password" placeholder="Enter Password" value={password} onChange={onChangePassword}/>
-            <button>SUBMIT</button>
+            <div className="flex justify-around text-white">
+            <label className="inline-flex items-center">
+                <input type="radio" className="form-radio" name="accountType" value="personal"/>
+                <span className="ml-2">Personal</span>
+            </label>
+            <label className="inline-flex items-center">
+                <input type="radio" className="form-radio" name="accountType" value="personal"/>
+                <span className="ml-2">Nonprofit</span>
+            </label>
+            </div>
+            <div className="flex justify-center">
+                <button className="bg-blue-500 w-24 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-4">
+                    Login
+                </button>
+            </div>
         </div>
     );
 };
