@@ -5,7 +5,7 @@ const NonprofitGraphDisplay = () => {
   const [displayOption, setDisplayOption] = useState('metrics');
 
   return (
-    <div>
+    <div className="bg-green-300">
       <button
         onClick={() => setDisplayOption('metrics')}
         type="button"
