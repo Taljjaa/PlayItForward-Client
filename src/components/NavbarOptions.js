@@ -8,7 +8,7 @@ const NavbarOptions = (props) => {
   return (
     <div className="flex text-blue-400 bg-gray-900 justify-around">
       <a
-        className="font-semibold rounded pr-2 hover:bg-blue-700"
+        className="font-semibold rounded px-2 hover:bg-blue-700"
         href="/"
       >
         Home

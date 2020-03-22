@@ -1,18 +1,13 @@
-// React Imports
 import React, { useState } from "react";
 
-// Custom Imports
 import NavbarOptions from "./NavbarOptions";
+import DropdownOptions from "./DropdownOptions";
 
-// This is a dynamic navbar that expands to show links
-// Layout:
 // Header Links, Collapsible Menu Options
 const Navbar = () => {
-  // STATE: Whether menu options are visible or not
   const [expanded, setExpanded] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
-  // METHOD: click handler for toggling menu visibility
   const onHamburgerClick = e => {
     setExpanded(!expanded);
   };
@@ -64,6 +59,7 @@ const Navbar = () => {
         </div>
       </div>
 
+      {expanded ? <DropdownOptions /> : null}
       {/* Collapsible Menu Options */}
       {/* Add ternary based on isExpanded that
           returns either a component (list) that
