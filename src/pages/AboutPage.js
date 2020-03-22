@@ -1,11 +1,11 @@
 // React imports
-import React from "react";
+import React from 'react';
 
 // Custom imports
-import Navbar from "../components/Navbar";
-import newsImage from "../media/animations/news-bird.gif";
-import contributeImage from "../media/animations/contribute-piggy.gif";
-import GifButton from "../components/GifButton";
+import Navbar from '../components/Navbar';
+import newsImage from '../media/animations/news-bird.gif';
+import contributeImage from '../media/animations/contribute-piggy.gif';
+import GifButton from '../components/GifButton';
 
 // Function component that displays general info about the program
 // Layout:
@@ -31,14 +31,12 @@ const AboutPage = () => {
         <div className="flex justify-center w-screen pt-4 pb-2">
           <a
             href="https://github.com/Taljjaa/PlayItForward-Client"
-            target="_blank"
-          >
+            target="_blank">
             <GifButton image={contributeImage} caption="Help Us Out" />
           </a>
           <a
             href="https://democracylab.ghost.io/play-it-forward-makes-volunteering-fun/"
-            target="_blank"
-          >
+            target="_blank">
             <GifButton image={newsImage} caption="Read About PIF" />
           </a>
         </div>

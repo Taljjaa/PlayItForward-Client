@@ -4,7 +4,13 @@ import React from 'react';
 // Functional component that displays a clickable gif with a caption
 // Layout:
 // Image, Caption
-const GifButton = props => {
+
+type Props = {
+  caption: string;
+  image: string;
+};
+
+const GifButton = (props: Props) => {
   return (
     <div className="flex flex-col items-center w-40 h-40 rounded shadow-lg bg-blue-400 mx-2 hover:bg-blue-500">
       {/* Image */}
