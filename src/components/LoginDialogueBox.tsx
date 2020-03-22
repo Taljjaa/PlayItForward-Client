@@ -26,15 +26,15 @@ const LoginDialogueBox = (props: DialogueProps) => {
     return (
         <div className="bg-blue-500 flex flex-col h-full px-4 pt-4">
             <p className="text-center text-white font-semibold text-xl pb-4">Welcome Back!</p>
-            <input className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-4" placeholder="Enter Username" value={username} onChange={onChangeUsername}/>
-            <input className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-4" type="password" placeholder="Enter Password" value={password} onChange={onChangePassword}/>
+            <input className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2" placeholder="Enter Username" value={username} onChange={onChangeUsername}/>
+            <input className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2" type="password" placeholder="Enter Password" value={password} onChange={onChangePassword}/>
             <div className="flex justify-around text-white">
             <label className="inline-flex items-center">
-                <input type="radio" className="form-radio" name="accountType" value="personal"/>
+                <input type="radio" className="form-radio" name="accountType" checked={props.isVolunteer} onClick={() => props.setIsVolunteer(true)}/>
                 <span className="ml-2">Volunteer</span>
             </label>
             <label className="inline-flex items-center">
-                <input type="radio" className="form-radio" name="accountType" value="personal"/>
+                <input type="radio" className="form-radio" name="accountType" checked={!props.isVolunteer} onClick={() => props.setIsVolunteer(false)}/>
                 <span className="ml-2">Nonprofit</span>
             </label>
             </div>

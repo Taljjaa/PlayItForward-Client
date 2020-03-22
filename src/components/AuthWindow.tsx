@@ -18,10 +18,10 @@ const AuthWindow = () => {
   return (
     <div className="auth-page-window flex flex-col h-80 w-9/12 bg-red-400">
       <div className="flex">
-        <div className={tabHeaderClass + (loginTabbed ? selected : unSelected)}>
+        <div className={tabHeaderClass + (loginTabbed ? selected : unSelected)} onClick={() => setLoginTabbed(true)}>
           Login
         </div>
-        <div className={tabHeaderClass + (loginTabbed ? unSelected : selected)}>
+        <div className={tabHeaderClass + (loginTabbed ? unSelected : selected)} onClick={() => setLoginTabbed(false)}>
           Signup
         </div>
       </div>
