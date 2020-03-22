@@ -42,7 +42,7 @@ const Navbar = () => {
   );
 
   return (
-    <header className="bg-gray-900">
+    <header className="relative bg-gray-900">
       {/* Header Links */}
       <div className="flex items-center px-6 py-2">
         <NavbarOptions />
