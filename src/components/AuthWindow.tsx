@@ -1,12 +1,10 @@
-// React imports
 import React, { useState } from "react";
 
-// Custom imports
 import LoginDialogueBox from "./LoginDialogueBox"
 import SignUpDialogueBox from "./SignUpDialogueBox"
-// This is a functional component that holds the dialogue options for signup/login
-// Layout
-// ClickableTab (x2), LoginBody || SignUpBody
+
+// Structure:
+// ClickableTabs (x2), LoginBody || SignUpBody
 const AuthWindow = () => {
   const [loginTabbed, setLoginTabbed] = useState(true);
   const [isVolunteer, setIsVolunteer] = useState(true);
@@ -17,6 +15,7 @@ const AuthWindow = () => {
 
   return (
     <div className="auth-page-window flex flex-col h-80 w-9/12 bg-red-400">
+      {/* Clickable Tabs */}
       <div className="flex">
         <div className={tabHeaderClass + (loginTabbed ? selected : unSelected)} onClick={() => setLoginTabbed(true)}>
           Login
@@ -25,6 +24,8 @@ const AuthWindow = () => {
           Signup
         </div>
       </div>
+
+      {/* LoginBody || SignUpBody */}
       {loginTabbed ? <LoginDialogueBox isVolunteer={isVolunteer} setIsVolunteer={setIsVolunteer}/> : <SignUpDialogueBox isVolunteer={isVolunteer} setIsVolunteer={setIsVolunteer}/>}
     </div>
   );
