@@ -40,19 +40,21 @@ const NonProfitDashboardPage = () => {
     <div className="bg-blue-300 h-screen">
       {/* Navbar */}
       <NavBar />
-      <div className="flex">
-        <div>
-          {data.nonprofit[0]['display_name']}
-          <img src={pifLogo} alt="event image" className="h-20 w-20" />
+      <div className="flex flex-col h-full bg-yellow-800">
+        <div className="flex flex-1">
+          <div>
+            {data.nonprofit[0]['display_name']}
+            <img src={pifLogo} alt="event image" className="h-20 w-20" />
+          </div>
+          <div className="flex">
+            {/* Create Event Button need to add an onclick that routes to create event page */}
+            <GifButton image={contributeImage} caption="Create Event" />
+            {/* Edit Account Button need to add an onclick that routes to edit account page? */}
+            <GifButton image={contributeImage} caption="Edit Account" />
+          </div>
         </div>
-        <div className="flex">
-          {/* Create Event Button need to add an onclick that routes to create event page */}
-          <GifButton image={contributeImage} caption="Create Event" />
-          {/* Edit Account Button need to add an onclick that routes to edit account page? */}
-          <GifButton image={contributeImage} caption="Edit Account" />
-        </div>
+        <NonprofitGraphDisplay />
       </div>
-      <NonprofitGraphDisplay />
     </div>
   );
 };
