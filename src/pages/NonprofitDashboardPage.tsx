@@ -45,7 +45,7 @@ const NonProfitDashboardPage = () => {
           {data.nonprofit[0]['display_name']}
           <img src={pifLogo} alt="event image" className="h-20 w-20" />
         </div>
-        <div>
+        <div className="flex">
           {/* Create Event Button need to add an onclick that routes to create event page */}
           <GifButton image={contributeImage} caption="Create Event" />
           {/* Edit Account Button need to add an onclick that routes to edit account page? */}
