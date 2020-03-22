@@ -10,19 +10,19 @@ const NonprofitGraphDisplay = () => {
         <button
           onClick={() => setDisplayOption('metrics')}
           type="button"
-          className="shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold py-1 px-4">
+          className="shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold p-10 border-solid border border-black">
           Metrics
         </button>
         <button
           onClick={() => setDisplayOption('events')}
           type="button"
-          className="shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold py-1 px-4">
+          className="shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold p-10 border-solid border border-black border-t-0 border-b-0">
           Events
         </button>
         <button
           onClick={() => setDisplayOption('volunteers')}
           type="button"
-          className="shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold py-1 px-4">
+          className="shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold p-10 border-solid border border-black">
           Volunteers
         </button>
       </div>

@@ -34,8 +34,7 @@ const NonProfitDashboardPage = () => {
   );
 
   if (loading || !data) return null;
-  console.log(data);
-  console.log(data.nonprofit[0]['display_name']);
+
   return (
     <div className="bg-blue-300 h-screen">
       {/* Navbar */}
