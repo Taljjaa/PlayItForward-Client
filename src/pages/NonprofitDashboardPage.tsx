@@ -42,8 +42,12 @@ const NonProfitDashboardPage = () => {
       <div className="flex flex-col h-full bg-blue-400">
         <div className="flex flex-1 items-center justify-around">
           <div className="flex flex-col">
-            <img src={pifLogo} alt="event image" className="h-20 w-20" />
-            {data.nonprofit[0]['display_name']}
+            <div className="flex items-center justify-center bg-white rounded-t">
+              <img src={pifLogo} alt="event image" className="h-20 w-20" />
+            </div>
+            <div className="bg-blue-700 text-white p-2 rounded-b">
+              {data.nonprofit[0]['display_name']}
+            </div>
           </div>
           <div className="flex">
             {/* Create Event Button need to add an onclick that routes to create event page */}
