@@ -19,7 +19,7 @@ const AboutPage = () => {
       {/* Text Blurb */}
       <div className="flex flex-col items-center">
         <h1 className="text-bold text-xl pt-4">ABOUT PLAY IT FORWARD</h1>
-        <p className="text-center pt-2">
+        <p className="p-6 text-sm text-center pt-2">
           Play It Forward is an application inspired from a Hackathon project
           made by Jennifer Williams and Shawn Huang Fernandes. It's purpose is
           to lower the barrier for volunteer engagement by gamifying the
