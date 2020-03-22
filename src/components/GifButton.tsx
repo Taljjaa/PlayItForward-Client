@@ -8,11 +8,14 @@ import React from 'react';
 type Props = {
   caption: string;
   image: string;
+  containerStyle?: object;
 };
 
 const GifButton = (props: Props) => {
   return (
-    <div className="flex flex-col items-center w-40 h-40 rounded shadow-lg bg-blue-400 mx-2 hover:bg-blue-500">
+    <div
+      className="flex flex-col items-center w-40 h-40 rounded shadow-lg bg-blue-400 mx-2 hover:bg-blue-500"
+      style={props.containerStyle}>
       {/* Image */}
       <img
         className="w-32 h-32 -mb-4"
