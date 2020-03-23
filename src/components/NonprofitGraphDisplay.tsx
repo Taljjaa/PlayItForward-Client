@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import NonprofitGraph from './NonprofitGraph';
 
+type DisplayOption = 'metrics' | 'events' | 'volunteers';
+
 const NonprofitGraphDisplay = () => {
-  const [displayOption, setDisplayOption] = useState('metrics');
+  const [displayOption, setDisplayOption] = useState<DisplayOption>('metrics');
 
   return (
     <div className="flex bg-blue-400 flex-1 border-t border-blue-900">
