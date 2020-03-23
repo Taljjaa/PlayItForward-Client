@@ -51,17 +51,9 @@ const NonProfitDashboardPage = () => {
           </div>
           <div className="flex">
             {/* Create Event Button need to add an onclick that routes to create event page */}
-            <GifButton
-              image={contributeImage}
-              caption="Create Event"
-              containerStyle={{ width: 100, height: 150 }}
-            />
+            <GifButton image={contributeImage} caption="Create Event" />
             {/* Edit Account Button need to add an onclick that routes to edit account page? */}
-            <GifButton
-              image={contributeImage}
-              caption="Edit Account"
-              containerStyle={{ width: 100, height: 150 }}
-            />
+            <GifButton image={contributeImage} caption="Edit Account" />
           </div>
         </div>
         <NonprofitGraphDisplay />
