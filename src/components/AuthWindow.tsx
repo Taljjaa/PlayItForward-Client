@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import LoginDialogueBox from "./LoginDialogueBox"
 import SignUpDialogueBox from "./SignUpDialogueBox"
 
-// Structure:
 // ClickableTabs (x2), LoginBody || SignUpBody
 const AuthWindow = () => {
   const [loginTabbed, setLoginTabbed] = useState(true);
