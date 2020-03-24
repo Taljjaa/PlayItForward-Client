@@ -10,6 +10,7 @@ type Props = {
   image: string;
 };
 
+// My Gif Button
 const GifButton = (props: Props) => {
   return (
     <div className="flex flex-col items-center w-40 h-40 rounded shadow-lg bg-blue-400 mx-2 hover:bg-blue-500">
