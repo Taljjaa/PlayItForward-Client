@@ -11,7 +11,7 @@ const EventSearchFilter = props => {
   const [eventEndDate, setEventEndDate] = useState("");
 
   return (
-    <div className="bg-blue-300 rounded-lg mx-2 my-2 px-4 pb-2 shadow-lg">
+    <div className="self-center bg-blue-300 rounded-lg mx-2 my-2 px-4 pb-2 shadow-lg w-6/12">
       {/* Form Start */}
       <form>
         {/* Input Row 1 */}
