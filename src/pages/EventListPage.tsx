@@ -9,7 +9,7 @@ import EventCardCollection from "../components/EventCardCollection";
 // This is a functional component that displays the event list page
 // Layout:
 // Navbar, FilterBar, EventList
-const EventListPage = props => {
+const EventListPage = () => {
   // State
   const [filter, setFilter] = useState({
     eventName: "",
