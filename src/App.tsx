@@ -27,7 +27,7 @@ function App() {
   return (
     <Router>
       <ApolloProvider client={client}>
-        <div className="bg-blue-200 text-blue-900">
+        <div className="bg-blue-200 text-blue-900 h-full w-full">
           <Route exact path="/">
             <LandingPage />
           </Route>
