@@ -24,7 +24,7 @@ const EventListPage = () => {
       <Navbar />
 
       {/* Event Search Filter */}
-      <EventSearchFilter setFilter={setFilter} />
+      <EventSearchFilter/>
 
       {/* Event List */}
       <div className="event-list-pg flex flex-col items-center w-screen h-full overflow-scroll">

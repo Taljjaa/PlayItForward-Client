@@ -8,7 +8,7 @@ const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const onHamburgerClick = e => {
+  const onHamburgerClick = (e : any) => {
     setExpanded(!expanded);
   };
 

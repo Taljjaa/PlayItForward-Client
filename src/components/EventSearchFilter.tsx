@@ -4,7 +4,7 @@ import React, { useState } from "react";
 // This functional component is the filter for searching events
 // Layout:
 // Form ( Input Row 1, Input Row 2, Submit )
-const EventSearchFilter = props => {
+const EventSearchFilter = () => {
   const [eventName, setEventName] = useState("");
   const [nonprofitName, setNonprofitName] = useState("");
   const [eventStartDate, setEventStartDate] = useState("");
