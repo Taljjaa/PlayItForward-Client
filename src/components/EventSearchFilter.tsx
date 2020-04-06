@@ -1,8 +1,6 @@
 // React imports
 import React, { useState } from "react";
 
-// This functional component is the filter for searching events
-// Layout:
 // Form ( Input Row 1, Input Row 2, Submit )
 const EventSearchFilter = () => {
   const [eventName, setEventName] = useState("");
@@ -11,15 +9,13 @@ const EventSearchFilter = () => {
   const [eventEndDate, setEventEndDate] = useState("");
 
   return (
-    <div className="self-center bg-blue-300 rounded-lg mx-2 my-2 px-4 pb-2 shadow-lg w-6/12">
+    <div className="self-center bg-blue-300 rounded-lg mx-2 my-2 px-4 pb-2 shadow-lg w-104">
       {/* Form Start */}
       <form>
         {/* Input Row 1 */}
         <div className="flex flex-row justify-between pb-1">
           <div>
-            <label className="block text-blue-800 pl-1">
-              Event Name
-            </label>
+            <label className="block text-blue-800 pl-1">Event Name</label>
             <input
               className="bg-gray-200 appearance-none rounded pl-1"
               id="event-name"
@@ -31,9 +27,7 @@ const EventSearchFilter = () => {
             />
           </div>
           <div>
-            <label className="block text-blue-800 pl-1">
-              Nonprofit
-            </label>
+            <label className="block text-blue-800 pl-1">Nonprofit</label>
             <input
               className="bg-gray-200 appearance-none rounded pl-1"
               id="nonprofit"
@@ -49,9 +43,7 @@ const EventSearchFilter = () => {
         {/* Input Row 2 */}
         <div className="flex flex-row justify-between">
           <div>
-            <label className="block text-blue-800 pl-1">
-              Start Date
-            </label>
+            <label className="block text-blue-800 pl-1">Start Date</label>
             <input
               className="bg-gray-200 appearance-none rounded pl-1"
               id="start-date"
@@ -63,9 +55,7 @@ const EventSearchFilter = () => {
             />
           </div>
           <div>
-            <label className="block text-blue-800 pl-1">
-              End Date
-            </label>
+            <label className="block text-blue-800 pl-1">End Date</label>
             <input
               className="bg-gray-200 appearance-none rounded pl-1"
               id="end-date"
