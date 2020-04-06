@@ -1,6 +1,15 @@
 // React imports
 import React from "react";
 
+// interface Props {
+//   data: {
+  
+  
+  //}
+// }
+
+// const EventCard = ({ event }: Props) => {
+
 // Custom imports
 import pifLogo from "../media/icons/pif-logo.png"; // PLACEHOLDER
 
