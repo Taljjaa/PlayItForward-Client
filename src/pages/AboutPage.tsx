@@ -19,7 +19,7 @@ const AboutPage = () => {
       {/* Text Blurb */}
       <div className="flex flex-col items-center">
         <h1 className="text-center font-bold text-4xl pt-4">ABOUT PLAY IT FORWARD</h1>
-        <p className="w-8/12 text-sm xl:text-lg text-center pt-2">
+        <p className="w-8/12 text-xl xl:text-2xl text-center pt-2">
           Play It Forward is an application made to get volunteers excited about
           volunteering by gamifying the experience while also providing a
           platform for nonprofits to get the support they need to build and
