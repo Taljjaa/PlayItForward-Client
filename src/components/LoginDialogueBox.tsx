@@ -23,7 +23,7 @@ const LoginDialogueBox = (props: DialogueProps) => {
     }
 
     return (
-        <div className="bg-blue-500 flex flex-col h-full px-4 pt-4">
+        <div className="bg-blue-500 flex flex-col h-full w- px-4 pt-4">
             {/* Header */}
             <p className="text-center text-white font-semibold text-xl pb-4">Welcome Back!</p>
 

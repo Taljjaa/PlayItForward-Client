@@ -6,7 +6,7 @@ import DropdownOptions from "./DropdownOptions";
 // Header Links, Collapsible Menu Options
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const onHamburgerClick = e => {
     setExpanded(!expanded);
