@@ -13,9 +13,9 @@ const AuthWindow = () => {
   const unSelected = "bg-blue-600";
 
   return (
-    <div className="auth-page-window flex flex-col h-80 w-9/12 bg-red-400">
+    <div className="auth-page-window flex flex-col h-80 w-80 lg:w-120">
       {/* Clickable Tabs */}
-      <div className="flex">
+      <div className="flex w-full">
         <div className={tabHeaderClass + (loginTabbed ? selected : unSelected)} onClick={() => setLoginTabbed(true)}>
           Login
         </div>

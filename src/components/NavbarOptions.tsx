@@ -4,7 +4,7 @@ import React from "react";
 // This functional component renders the options for the burger menu
 // Layout:
 // Links (x4)
-const NavbarOptions = (props) => {
+const NavbarOptions = () => {
   return (
     <div className="flex text-blue-400 bg-gray-900 justify-around">
       <a
