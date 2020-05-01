@@ -1,11 +1,11 @@
 // React imports
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // This functional component is the filter for searching events
 // Layout:
 // Form ( Input Row 1, Submit )
 const NonprofitSearchFilter = () => {
-  const [eventName, setEventName] = useState("");
+  const [eventName, setEventName] = useState('');
 
   return (
     <div className="bg-blue-300 rounded-lg mx-2 my-2 px-4 pb-2 shadow-lg w-104 self-center">
@@ -33,8 +33,7 @@ const NonprofitSearchFilter = () => {
         <div className="flex flex-row justify-center pt-2">
           <button
             className="shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold py-1 px-4 rounded"
-            type="button"
-          >
+            type="button">
             Search
           </button>
         </div>

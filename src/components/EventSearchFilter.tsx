@@ -1,12 +1,12 @@
 // React imports
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // Form ( Input Row 1, Input Row 2, Submit )
 const EventSearchFilter = () => {
-  const [eventName, setEventName] = useState("");
-  const [nonprofitName, setNonprofitName] = useState("");
-  const [eventStartDate, setEventStartDate] = useState("");
-  const [eventEndDate, setEventEndDate] = useState("");
+  const [eventName, setEventName] = useState('');
+  const [nonprofitName, setNonprofitName] = useState('');
+  const [eventStartDate, setEventStartDate] = useState('');
+  const [eventEndDate, setEventEndDate] = useState('');
 
   return (
     <div className="self-center bg-blue-300 rounded-lg mx-2 my-2 px-4 pb-2 shadow-lg w-104">
@@ -70,8 +70,7 @@ const EventSearchFilter = () => {
         <div className="flex flex-row justify-center pt-2">
           <button
             className="shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold py-1 px-4 rounded"
-            type="button"
-          >
+            type="button">
             Search
           </button>
         </div>

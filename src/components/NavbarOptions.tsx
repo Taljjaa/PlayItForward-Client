@@ -1,5 +1,5 @@
 // React imports
-import React from "react";
+import React from 'react';
 
 // This functional component renders the options for the burger menu
 // Layout:
@@ -7,28 +7,20 @@ import React from "react";
 const NavbarOptions = () => {
   return (
     <div className="flex text-blue-400 bg-gray-900 justify-around">
-      <a
-        className="font-semibold rounded px-2 hover:bg-blue-700"
-        href="/"
-      >
+      <a className="font-semibold rounded px-2 hover:bg-blue-700" href="/">
         Home
       </a>
-      <a
-        className="font-semibold rounded px-2 hover:bg-blue-700"
-        href="/about"
-      >
+      <a className="font-semibold rounded px-2 hover:bg-blue-700" href="/about">
         About
       </a>
       <a
         className="font-semibold rounded px-2 hover:bg-blue-700"
-        href="/events"
-      >
+        href="/events">
         Events
       </a>
       <a
         className="font-semibold rounded px-2 hover:bg-blue-700"
-        href="/nonprofits"
-      >
+        href="/nonprofits">
         Nonprofits
       </a>
     </div>

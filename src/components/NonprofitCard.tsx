@@ -1,18 +1,18 @@
 // React imports
-import React from "react";
+import React from 'react';
 
 // Custom imports
-import pifLogo from "../media/icons/pif-logo.png"; // PLACEHOLDER
+import pifLogo from '../media/icons/pif-logo.png'; // PLACEHOLDER
 
 interface Props {
   data: {
-    displayName: string,
-    mission: string
-  }
+    displayName: string;
+    mission: string;
+  };
 }
 
 // Component Layout: Nonprofit Logo, Nonprofit information
-const NonprofitCard = ({data} : Props) => {
+const NonprofitCard = ({ data }: Props) => {
   return (
     <div className="flex flex-row justify-end pb-2">
       {/* Nonprofit Logo */}

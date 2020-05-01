@@ -17,7 +17,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 //the client represents the endpoint to our graphql server
 
 const client = new ApolloClient({
-  uri: 'https://play-it-forward-graphql.herokuapp.com/v1/graphql',
+  uri: 'http://localhost:4000/',
 });
 
 //ApolloProvider allows us to access the client from anywhere in the component tree
