@@ -1,21 +1,21 @@
 // React Imports
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // Custom Imports
-import Navbar from "../components/Navbar";
-import EventSearchFilter from "../components/EventSearchFilter";
-import EventCardCollection from "../components/EventCardCollection";
+import Navbar from '../components/Navbar';
+import EventSearchFilter from '../components/EventSearchFilter';
+import EventCardCollection from '../components/EventCardCollection';
 
 // This is a functional component that displays the event list page
 // Layout:
 // Navbar, FilterBar, EventList
-const EventListPage = props => {
+const EventListPage = () => {
   // State
   const [filter, setFilter] = useState({
-    eventName: "",
-    nonprofitName: "",
-    dateStart: "",
-    dateEnd: ""
+    eventName: '',
+    nonprofitName: '',
+    dateStart: '',
+    dateEnd: '',
   });
 
   return (
@@ -24,7 +24,7 @@ const EventListPage = props => {
       <Navbar />
 
       {/* Event Search Filter */}
-      <EventSearchFilter setFilter={setFilter} />
+      <EventSearchFilter />
 
       {/* Event List */}
       <div className="event-list-pg flex flex-col items-center w-screen h-full overflow-scroll">

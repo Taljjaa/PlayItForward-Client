@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import NavbarOptions from "./NavbarOptions";
-import DropdownOptions from "./DropdownOptions";
+import NavbarOptions from './NavbarOptions';
+import DropdownOptions from './DropdownOptions';
 
 // Header Links, Collapsible Menu Options
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  const onHamburgerClick = e => {
+  const onHamburgerClick = (e: any) => {
     setExpanded(!expanded);
   };
 
@@ -18,8 +18,7 @@ const Navbar = () => {
       className="h-6 w-6 fill-current text-red-500"
       onClick={onHamburgerClick}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
-    >
+      viewBox="0 0 20 20">
       <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
     </svg>
   );
@@ -30,8 +29,7 @@ const Navbar = () => {
       className="h-6 w-6 fill-current text-white"
       onClick={onHamburgerClick}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
-    >
+      viewBox="0 0 20 20">
       <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
     </svg>
   );
@@ -51,8 +49,7 @@ const Navbar = () => {
           ) : (
             <a
               className="font-semibold rounded px-2 hover:bg-blue-700 text-blue-400 underline"
-              href="/auth"
-            >
+              href="/auth">
               Login
             </a>
           )}
