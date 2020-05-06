@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import NonprofitGraph from "./NonprofitGraph";
+import VolunteerGraph from "./VolunteerGraph";
 
-type DisplayOption = "metrics" | "events" | "volunteers";
+type DisplayOption = "history" | "events" | "nonprofits";
 
-const NonprofitGraphDisplay = () => {
-  const [displayOption, setDisplayOption] = useState<DisplayOption>("metrics");
+const VolunteerGraphDisplay = () => {
+  const [displayOption, setDisplayOption] = useState<DisplayOption>("history");
 
   return (
     <div className="flex bg-blue-400 flex-1 border-t border-blue-900">
       <div className="flex flex-col h-full">
         <button
-          onClick={() => setDisplayOption("metrics")}
+          onClick={() => setDisplayOption("history")}
           type="button"
           className="flex-1 shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold p-10 border-solid border border-blue-900 border-t-0"
         >
-          Metrics
+          History
         </button>
         <button
           onClick={() => setDisplayOption("events")}
@@ -24,18 +24,18 @@ const NonprofitGraphDisplay = () => {
           Events
         </button>
         <button
-          onClick={() => setDisplayOption("volunteers")}
+          onClick={() => setDisplayOption("nonprofits")}
           type="button"
           className="flex-1 shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold p-10 border-solid border border-blue-900"
         >
-          Volunteers
+          Nonprofits
         </button>
       </div>
       <div className="flex justify-center items-center w-full">
-        <NonprofitGraph displayOption={displayOption} />
+        <VolunteerGraph displayOption={displayOption} />
       </div>
     </div>
   );
 };
 
-export default NonprofitGraphDisplay;
+export default VolunteerGraphDisplay;
