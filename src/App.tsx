@@ -1,23 +1,24 @@
 // React Imports
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // Custom Imports
-import LandingPage from './pages/LandingPage';
-import EventListPage from './pages/EventListPage';
-import NonprofitListPage from './pages/NonprofitListPage';
-import AboutPage from './pages/AboutPage';
-import AuthPage from './pages/AuthPage';
-import NonprofitDashboardPage from './pages/NonprofitDashboardPage';
+import LandingPage from "./pages/LandingPage";
+import EventListPage from "./pages/EventListPage";
+import NonprofitListPage from "./pages/NonprofitListPage";
+import AboutPage from "./pages/AboutPage";
+import AuthPage from "./pages/AuthPage";
+import NonprofitDashboardPage from "./pages/NonprofitDashboardPage";
+import VolunteerDashboardPage from "./pages/VolunteerDashboardPage";
 
 //Imports from Apollo
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
 
 //the client represents the endpoint to our graphql server
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/',
+  uri: "http://localhost:4000/"
 });
 
 //ApolloProvider allows us to access the client from anywhere in the component tree
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path="/nonprofit-dashboard">
             <NonprofitDashboardPage />
+          </Route>
+          <Route path="/volunteer-dashboard">
+            <VolunteerDashboardPage />
           </Route>
         </div>
       </ApolloProvider>

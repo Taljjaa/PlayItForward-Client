@@ -1,8 +1,8 @@
 import React from "react";
 import NavBar from "../components/Navbar";
-import NonprofitGraphDisplay from "../components/NonprofitGraphDisplay";
+import VolunteerGraphDisplay from "../components/VolunteerGraphDisplay";
 
-const NonprofitDashboardPage = () => {
+const VolunteerDashboardPage = () => {
   return (
     <div className="flex flex-col h-screen">
       {/* Navbar */}
@@ -22,10 +22,10 @@ const NonprofitDashboardPage = () => {
             </div>
           </div>
         </div>
-        <NonprofitGraphDisplay />
+        <VolunteerGraphDisplay />
       </div>
     </div>
   );
 };
 
-export default NonprofitDashboardPage;
+export default VolunteerDashboardPage;
