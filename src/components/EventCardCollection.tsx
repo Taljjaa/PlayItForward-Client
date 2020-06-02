@@ -33,7 +33,6 @@ const EventCardCollection = () => {
   //the return value is held in data
   const { loading, error, data } = useQuery<getEvents>(GET_EVENTS);
   if (loading || !data) return null;
-  console.log(data);
   return (
     <div>
       {!error ? (

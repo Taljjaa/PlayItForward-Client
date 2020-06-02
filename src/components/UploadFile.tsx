@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
-// const SINGLE_UPLOAD = gql`
-//   mutation($file: Upload!) {
-//     singleUpload(file: $file) {
-//       filename
-//       mimetype
-//       encoding
-//       url
-//     }
-//   }
-// `;
+const SINGLE_UPLOAD = gql`
+  mutation($file: Upload!) {
+    singleUpload(file: $file) {
+      filename
+      mimetype
+      encoding
+      url
+    }
+  }
+`;
 
 const UploadFile = () => {
   const [mutate, { loading, error }] = useMutation(SINGLE_UPLOAD);
