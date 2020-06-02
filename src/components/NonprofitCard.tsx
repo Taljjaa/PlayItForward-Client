@@ -4,15 +4,14 @@ import React from 'react';
 // Custom imports
 import pifLogo from '../media/icons/pif-logo.png'; // PLACEHOLDER
 
+import { getNonprofits_getNonprofits } from '../generated/getNonprofits';
+
 interface Props {
-  data: {
-    displayName: string;
-    mission: string;
-  };
+  nonprofit: getNonprofits_getNonprofits;
 }
 
 // Component Layout: Nonprofit Logo, Nonprofit information
-const NonprofitCard = ({ data }: Props) => {
+const NonprofitCard = ({ nonprofit }: Props) => {
   return (
     <div className="flex flex-row justify-end pb-2">
       {/* Nonprofit Logo */}
@@ -21,8 +20,8 @@ const NonprofitCard = ({ data }: Props) => {
       </div>
       {/* Nonprofit Information */}
       <div className="flex flex-col pl-2 bg-blue-400 w-64 h-24">
-        <h1 className="text-s font-bold">{data.displayName}</h1>
-        <h1 className="text-xs">{data.mission}</h1>
+        <h1 className="text-s font-bold">{nonprofit.displayName}</h1>
+        <h1 className="text-xs">{nonprofit.mission}</h1>
       </div>
     </div>
   );

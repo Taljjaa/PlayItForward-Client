@@ -32,8 +32,8 @@ const NonprofitCardCollection = () => {
   console.log(data);
   return (
     <div className="flex flex-col flex-grow items-center w-full overflow-auto">
-      {nonprofitData.nonprofits.map(el => {
-        return <NonprofitCard key={Math.random()} data={el} />;
+      {data.getNonprofits.map(nonprofit => {
+        return <NonprofitCard key={nonprofit.id} nonprofit={nonprofit} />;
       })}
     </div>
   );
