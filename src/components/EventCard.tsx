@@ -2,7 +2,6 @@
 import React from 'react';
 
 // Custom Imports
-import pifLogo from '../media/icons/pif-logo.png'; // PLACEHOLDER
 
 import { getEvents_getEvents } from '../generated/getEvents';
 

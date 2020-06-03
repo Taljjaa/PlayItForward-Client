@@ -3,7 +3,6 @@ import React from 'react';
 
 // Custom imports
 import NonprofitCard from './NonprofitCard';
-import { nonprofitData } from '../pages/mock-data';
 
 // This functional component holds a collection of nonprofit cards
 // Layout:
