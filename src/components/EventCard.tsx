@@ -19,7 +19,7 @@ const EventCard = ({ event }: Props) => {
     <div className="flex flex-row justify-end pb-2">
       {/* Event Logo */}
       <div className="flex justify-center items-center bg-white h-24 w-24">
-        <img src={image} alt="event image" />
+        <img src={image} alt="event" />
       </div>
       {/* Event Information */}
       <div className="flex flex-col pl-2 bg-blue-400 w-64 h-24">
