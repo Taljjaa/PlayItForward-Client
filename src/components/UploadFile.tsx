@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
 const SINGLE_UPLOAD = gql`
-  mutation($file: Upload!) {
+  mutation singleUpload($file: Upload!) {
     singleUpload(file: $file) {
       filename
       mimetype

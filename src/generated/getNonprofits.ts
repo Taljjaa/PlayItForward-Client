@@ -10,6 +10,7 @@
 export interface getNonprofits_getNonprofits {
   __typename: 'Nonprofit';
   id: number;
+  logo: string;
   displayName: string;
   mission: string | null;
 }

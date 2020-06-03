@@ -32,20 +32,28 @@ const AboutPage = () => {
         <div className="flex justify-center w-screen pt-4 pb-2">
           <a
             href="https://github.com/Taljjaa/PlayItForward-Client"
-            target="_blank">
+            target="_blank"
+            rel="noopener noreferrer">
             <GifButton image={contributeImage} caption="Help Us Out" />
           </a>
           <a
             href="https://democracylab.ghost.io/play-it-forward-makes-volunteering-fun/"
-            target="_blank">
+            target="_blank"
+            rel="noopener noreferrer">
             <GifButton image={newsImage} caption="Read About PIF" />
           </a>
         </div>
         <div className="flex justify-center w-screen pt-4 pb-2">
-          <a href="https://jenniferwilliams.dev/" target="_blank">
+          <a
+            href="https://jenniferwilliams.dev/"
+            target="_blank"
+            rel="noopener noreferrer">
             <GifButton image={newsImage} caption="About Jen" />
           </a>
-          <a href="https://shawnhuangfernandes.netlify.com" target="_blank">
+          <a
+            href="https://shawnhuangfernandes.netlify.com"
+            target="_blank"
+            rel="noopener noreferrer">
             <GifButton image={contributeImage} caption="About Shawn" />
           </a>
         </div>

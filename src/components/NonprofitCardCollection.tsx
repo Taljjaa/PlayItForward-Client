@@ -3,7 +3,6 @@ import React from 'react';
 
 // Custom imports
 import NonprofitCard from './NonprofitCard';
-import { nonprofitData } from '../pages/mock-data';
 
 // This functional component holds a collection of nonprofit cards
 // Layout:
@@ -20,6 +19,7 @@ const GET_ALL_NONPROFITS = gql`
   query getNonprofits {
     getNonprofits {
       id
+      logo
       displayName
       mission
     }
@@ -29,7 +29,6 @@ const GET_ALL_NONPROFITS = gql`
 const NonprofitCardCollection = () => {
   const { loading, error, data } = useQuery<getNonprofits>(GET_ALL_NONPROFITS);
   if (loading || !data) return null;
-  console.log(data);
   return (
     <div className="flex flex-col flex-grow items-center w-full overflow-auto">
       {data.getNonprofits.map(nonprofit => {
