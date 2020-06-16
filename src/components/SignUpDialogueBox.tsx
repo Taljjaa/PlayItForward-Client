@@ -1,5 +1,7 @@
 // React imports
-import React, { useState } from "react";
+import React, { useState } from 'react';
+
+import UploadFile from './UploadFile';
 
 // Type definitions
 type DialogueProps = {
@@ -10,9 +12,9 @@ type DialogueProps = {
 // Structure
 // Header, Text Fields, Radio Selection, Submit
 const SignUpDialogueBox = (props: DialogueProps) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
 
   const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
