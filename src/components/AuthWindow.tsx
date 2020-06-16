@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import LoginDialogueBox from './LoginDialogueBox';
-import SignUpDialogueBox from './SignUpDialogueBox';
+import LoginDialogueBox from "./LoginDialogueBox";
+import SignUpDialogueBox from "./SignUpDialogueBox";
 
 // ClickableTabs (x2), LoginBody || SignUpBody
 const AuthWindow = () => {
@@ -9,22 +9,24 @@ const AuthWindow = () => {
   const [isVolunteer, setIsVolunteer] = useState(true);
 
   const tabHeaderClass =
-    'flex text-white justify-center items-center w-6/12 h-12 ';
-  const selected = 'bg-blue-500';
-  const unSelected = 'bg-blue-600';
+    "flex text-white justify-center items-center w-6/12 h-12 ";
+  const selected = "bg-blue-500";
+  const unSelected = "bg-blue-600";
 
   return (
-    <div className="auth-page-window flex flex-col h-80 w-80 lg:w-120">
+    <div className="auth-page-window flex flex-col w-80 lg:w-120">
       {/* Clickable Tabs */}
       <div className="flex w-full">
         <div
           className={tabHeaderClass + (loginTabbed ? selected : unSelected)}
-          onClick={() => setLoginTabbed(true)}>
+          onClick={() => setLoginTabbed(true)}
+        >
           Login
         </div>
         <div
           className={tabHeaderClass + (loginTabbed ? unSelected : selected)}
-          onClick={() => setLoginTabbed(false)}>
+          onClick={() => setLoginTabbed(false)}
+        >
           Signup
         </div>
       </div>

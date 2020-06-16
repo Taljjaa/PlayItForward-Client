@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 // Type definitions
 type DialogueProps = {
@@ -9,8 +9,8 @@ type DialogueProps = {
 // Structure:
 // Header, Text Fields, Radio Selection, Submit Button
 const LoginDialogueBox = (props: DialogueProps) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
@@ -70,7 +70,7 @@ const LoginDialogueBox = (props: DialogueProps) => {
 
       {/* Submit Button */}
       <div className="flex justify-center">
-        <button className="bg-blue-600 w-24 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-4">
+        <button className="bg-blue-600 w-24 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-4 mb-2">
           Login
         </button>
       </div>

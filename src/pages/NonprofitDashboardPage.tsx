@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import NonprofitGraphDisplay from "../components/NonprofitGraphDisplay";
+import EditNonprofitPage from "./EditNonprofitPage";
 
 const NonprofitDashboardPage = () => {
   return (
@@ -21,7 +22,9 @@ const NonprofitDashboardPage = () => {
               <Link to="/create-event">
                 <div className="mr-4 w-72 h-72 bg-blue-500">Host An Event</div>
               </Link>
-              <div className="ml-4 w-72 h-72 bg-blue-500">Edit Account</div>
+              <Link to="/edit-nonprofit">
+                <div className="ml-4 w-72 h-72 bg-blue-500">Edit Account</div>
+              </Link>
             </div>
           </div>
         </div>

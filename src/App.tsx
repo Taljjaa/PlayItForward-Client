@@ -11,6 +11,7 @@ import AuthPage from "./pages/AuthPage";
 import NonprofitDashboardPage from "./pages/NonprofitDashboardPage";
 import VolunteerDashboardPage from "./pages/VolunteerDashboardPage";
 import CreateEventPage from "./pages/CreateEventPage";
+import EditNonprofitPage from "./pages/EditNonprofitPage";
 
 //Imports from Apollo
 import ApolloClient from "apollo-boost";
@@ -53,6 +54,9 @@ function App() {
           </Route>
           <Route path="/create-event">
             <CreateEventPage />
+          </Route>
+          <Route path="/edit-nonprofit">
+            <EditNonprofitPage />
           </Route>
         </div>
       </ApolloProvider>

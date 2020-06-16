@@ -3,6 +3,11 @@ import Navbar from "../components/Navbar";
 
 const CreateEventPage = () => {
   const [option, setOption] = useState("overview");
+  const [eventDetails, setEventDetails] = useState({
+    name: "",
+    date: "",
+    location: ""
+  });
 
   const renderBody = (option: string) => {
     switch (option) {
@@ -76,6 +81,7 @@ const CreateEventPage = () => {
             Create An Event
           </p>
           {renderBody(option)}
+          <button className="bg-blue-800 text-white">Create Event</button>
         </div>
       </div>
     </div>
