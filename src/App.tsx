@@ -3,13 +3,16 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Custom Imports
-import LandingPage from './pages/LandingPage';
-import EventListPage from './pages/EventListPage';
-import NonprofitListPage from './pages/NonprofitListPage';
-import AboutPage from './pages/AboutPage';
-import AuthPage from './pages/AuthPage';
-import NonprofitDashboardPage from './pages/NonprofitDashboardPage';
-import VolunteerDashboardPage from './pages/VolunteerDashboardPage';
+import LandingPage from "./pages/LandingPage";
+import EventListPage from "./pages/EventListPage";
+import NonprofitListPage from "./pages/NonprofitListPage";
+import AboutPage from "./pages/AboutPage";
+import AuthPage from "./pages/AuthPage";
+import NonprofitDashboardPage from "./pages/NonprofitDashboardPage";
+import VolunteerDashboardPage from "./pages/VolunteerDashboardPage";
+import CreateEventPage from "./pages/CreateEventPage";
+import EditNonprofitPage from "./pages/EditNonprofitPage";
+
 
 //Imports from Apollo
 // import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-boost';
@@ -56,6 +59,12 @@ function App() {
           </Route>
           <Route path="/volunteer-dashboard">
             <VolunteerDashboardPage />
+          </Route>
+          <Route path="/create-event">
+            <CreateEventPage />
+          </Route>
+          <Route path="/edit-nonprofit">
+            <EditNonprofitPage />
           </Route>
         </div>
       </ApolloProvider>

@@ -59,6 +59,30 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         value={passwordConfirm}
         onChange={onChangePasswordConfirm}
       />
+      <input
+        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        placeholder="Enter Mission Statement"
+        value={passwordConfirm}
+        onChange={onChangePasswordConfirm}
+      />
+      <input
+        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        placeholder="Enter Organization Description"
+        value={passwordConfirm}
+        onChange={onChangePasswordConfirm}
+      />
+      <input
+        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        placeholder="Enter Organization Display Name"
+        value={passwordConfirm}
+        onChange={onChangePasswordConfirm}
+      />
+      <input
+        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        placeholder="Enter Organization Contact"
+        value={passwordConfirm}
+        onChange={onChangePasswordConfirm}
+      />
 
       {/* Radio Selection */}
       <div className="flex justify-around text-white">
@@ -84,13 +108,9 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         </label>
       </div>
 
-      <div>
-        <UploadFile />
-      </div>
-
       {/* Submit */}
       <div className="flex justify-center">
-        <button className="bg-blue-600 w-24 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-4">
+        <button className="bg-blue-600 w-24 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-4 mb-2">
           Register
         </button>
       </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import NavBar from "../components/Navbar";
+import { Link } from "react-router-dom";
 import NonprofitGraphDisplay from "../components/NonprofitGraphDisplay";
+import EditNonprofitPage from "./EditNonprofitPage";
 
 const NonprofitDashboardPage = () => {
   return (
@@ -17,8 +19,12 @@ const NonprofitDashboardPage = () => {
               <h1 className="text-6xl">What Would You Like To Do?</h1>
             </div>
             <div className="flex w-full flex-1 bg-blue-400 justify-center items-center">
-              <div className="mr-4 w-72 h-72 bg-blue-500">Some Picture</div>
-              <div className="ml-4 w-72 h-72 bg-blue-500">Some Picture</div>
+              <Link to="/create-event">
+                <div className="mr-4 w-72 h-72 bg-blue-500">Host An Event</div>
+              </Link>
+              <Link to="/edit-nonprofit">
+                <div className="ml-4 w-72 h-72 bg-blue-500">Edit Account</div>
+              </Link>
             </div>
           </div>
         </div>
