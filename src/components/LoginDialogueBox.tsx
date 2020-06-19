@@ -1,4 +1,6 @@
 import React, { useState, SyntheticEvent } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
 // Type definitions
 type DialogueProps = {
@@ -6,11 +8,28 @@ type DialogueProps = {
   setIsVolunteer: any;
 };
 
+const LOGIN_VOLUNTEER = gql`
+  mutation loginVolunteer($username: String!, $password: String!) {
+    loginVolunteer(username: $username, password: $password) {
+      errors {
+        path
+        message
+      }
+      token
+      volunteer {
+        id
+      }
+    }
+  }
+`;
+
 // Structure:
 // Header, Text Fields, Radio Selection, Submit Button
 const LoginDialogueBox = (props: DialogueProps) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const [loginVol, { data }] = useMutation(LOGIN_VOLUNTEER);
 
   const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
@@ -22,9 +41,11 @@ const LoginDialogueBox = (props: DialogueProps) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: SyntheticEvent) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    console.log(username, password);
+    console.log(username, password, props.isVolunteer);
+    let data = await loginVol({ variables: { username, password } });
+    console.log(data);
   };
 
   return (
