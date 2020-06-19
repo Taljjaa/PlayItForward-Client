@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, SyntheticEvent } from 'react';
 
 // Type definitions
 type DialogueProps = {
@@ -9,8 +9,8 @@ type DialogueProps = {
 // Structure:
 // Header, Text Fields, Radio Selection, Submit Button
 const LoginDialogueBox = (props: DialogueProps) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
@@ -22,8 +22,15 @@ const LoginDialogueBox = (props: DialogueProps) => {
     setPassword(e.target.value);
   };
 
+  const handleSubmit = (e: SyntheticEvent) => {
+    e.preventDefault();
+    console.log(username, password);
+  };
+
   return (
-    <div className="bg-blue-500 flex flex-col h-full w-full px-4 pt-4">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-blue-500 flex flex-col h-full w-full px-4 pt-4">
       {/* Header */}
       <p className="text-center text-white font-semibold text-xl pb-4">
         Welcome Back!
@@ -74,7 +81,7 @@ const LoginDialogueBox = (props: DialogueProps) => {
           Login
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 
