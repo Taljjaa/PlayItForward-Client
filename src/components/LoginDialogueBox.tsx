@@ -11,6 +11,7 @@ type DialogueProps = {
 const LOGIN_VOLUNTEER = gql`
   mutation loginVolunteer($username: String!, $password: String!) {
     loginVolunteer(username: $username, password: $password) {
+      ok
       errors {
         path
         message
@@ -23,15 +24,33 @@ const LOGIN_VOLUNTEER = gql`
   }
 `;
 
+const LOGIN_NONPROFIT = gql`
+  mutation loginNonprofit($username: String!, $password: String!) {
+    loginNonprofit(username: $username, password: $password) {
+      ok
+      errors {
+        path
+        message
+      }
+      token
+      nonprofit {
+        id
+      }
+    }
+  }
+`;
+
 // Structure:
 // Header, Text Fields, Radio Selection, Submit Button
 const LoginDialogueBox = (props: DialogueProps) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  //hook used to access the cache
   const client = useApolloClient();
 
   const [loginVol] = useMutation(LOGIN_VOLUNTEER);
+  const [loginNonprofit] = useMutation(LOGIN_NONPROFIT);
 
   const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
@@ -45,15 +64,32 @@ const LoginDialogueBox = (props: DialogueProps) => {
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    console.log(username, password, props.isVolunteer);
-    let volunteerData = await loginVol({ variables: { username, password } });
-    client.writeData({
-      data: {
-        volunteerID: volunteerData.data.loginVolunteer.volunteer.id,
-        token: volunteerData.data.loginVolunteer.token,
-      },
-    });
-    console.log(volunteerData);
+    if (props.isVolunteer) {
+      console.log('volunteer');
+      let volunteerData = await loginVol({ variables: { username, password } });
+      if (volunteerData.data.ok) {
+        client.writeData({
+          data: {
+            volunteerID: volunteerData.data.loginVolunteer.volunteer.id,
+            token: volunteerData.data.loginVolunteer.token,
+          },
+        });
+      }
+    } else {
+      console.log('nonprofit');
+      let nonprofitData = await loginNonprofit({
+        variables: { username, password },
+      });
+      if (nonprofitData.data.ok) {
+        client.writeData({
+          data: {
+            nonprofitID: nonprofitData.data.loginNonprofit.nonprofit.id,
+            token: nonprofitData.data.loginNonprofit.token,
+          },
+        });
+      }
+      console.log(nonprofitData);
+    }
   };
 
   return (
