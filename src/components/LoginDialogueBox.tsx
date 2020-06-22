@@ -1,5 +1,5 @@
 import React, { useState, SyntheticEvent } from 'react';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useApolloClient } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 // Type definitions
@@ -29,7 +29,9 @@ const LoginDialogueBox = (props: DialogueProps) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const [loginVol, { data }] = useMutation(LOGIN_VOLUNTEER);
+  const client = useApolloClient();
+
+  const [loginVol] = useMutation(LOGIN_VOLUNTEER);
 
   const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
@@ -44,8 +46,14 @@ const LoginDialogueBox = (props: DialogueProps) => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     console.log(username, password, props.isVolunteer);
-    let data = await loginVol({ variables: { username, password } });
-    console.log(data);
+    let volunteerData = await loginVol({ variables: { username, password } });
+    client.writeData({
+      data: {
+        volunteerID: volunteerData.data.loginVolunteer.volunteer.id,
+        token: volunteerData.data.loginVolunteer.token,
+      },
+    });
+    console.log(volunteerData);
   };
 
   return (
