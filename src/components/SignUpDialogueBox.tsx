@@ -36,6 +36,38 @@ const REGISTER_VOLUNTEER = gql`
   }
 `;
 
+const REGISTER_NONPROFIT = gql`
+  mutation registerNonprofit(
+    $username: String!
+    $password: String!
+    $confirmPassword: String!
+    $mission: String!
+    $description: String!
+    $displayName: String!
+    $contact: String!
+  ) {
+    registerNonprofit(
+      username: $username
+      password: $password
+      confirmPassword: $confirmPassword
+      mission: $mission
+      description: $description
+      displayName: $displayName
+      contact: $contact
+    ) {
+      ok
+      errors {
+        path
+        message
+      }
+      token
+      nonprofit {
+        id
+      }
+    }
+  }
+`;
+
 // Structure
 // Header, Text Fields, Radio Selection, Submit
 const SignUpDialogueBox = (props: DialogueProps) => {
@@ -51,6 +83,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   let history = useHistory();
 
   const [registerVolunteer] = useMutation(REGISTER_VOLUNTEER);
+  const [registerNonprofit] = useMutation(REGISTER_NONPROFIT);
 
   const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
@@ -97,7 +130,6 @@ const SignUpDialogueBox = (props: DialogueProps) => {
           confirmPassword,
         },
       });
-      console.log(volunteerData);
       if (volunteerData.data.registerVolunteer.ok) {
         client.writeData({
           data: {
@@ -107,17 +139,28 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         });
         history.push('/volunteer-dashboard');
       }
+    } else {
+      let nonprofitData = await registerNonprofit({
+        variables: {
+          username,
+          password,
+          confirmPassword,
+          mission,
+          description,
+          displayName,
+          contact,
+        },
+      });
+      if (nonprofitData.data.registerNonprofit.ok) {
+        client.writeData({
+          data: {
+            nonprofitID: nonprofitData.data.registerNonprofit.nonprofit.id,
+            token: nonprofitData.data.registerNonprofit.token,
+          },
+        });
+        history.push('/nonprofit-dashboard');
+      }
     }
-  };
-
-  const onNonprofitRegister = () => {
-    // GraphQL mutation goes here for registering nonProfit
-    // attributes: username, password, mission, description, displayName, contact
-  };
-
-  const onVolunteerRegister = () => {
-    // GraphQL mutation goes here for registering volunteer
-    // attributes: username, password
   };
 
   return (
