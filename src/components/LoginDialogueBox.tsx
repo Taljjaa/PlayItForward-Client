@@ -1,4 +1,5 @@
 import React, { useState, SyntheticEvent } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useMutation, useApolloClient } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
@@ -48,6 +49,7 @@ const LoginDialogueBox = (props: DialogueProps) => {
 
   //hook used to access the cache
   const client = useApolloClient();
+  let history = useHistory();
 
   const [loginVol] = useMutation(LOGIN_VOLUNTEER);
   const [loginNonprofit] = useMutation(LOGIN_NONPROFIT);
@@ -65,7 +67,6 @@ const LoginDialogueBox = (props: DialogueProps) => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     if (props.isVolunteer) {
-      console.log('volunteer');
       let volunteerData = await loginVol({ variables: { username, password } });
       if (volunteerData.data.ok) {
         client.writeData({
@@ -74,6 +75,7 @@ const LoginDialogueBox = (props: DialogueProps) => {
             token: volunteerData.data.loginVolunteer.token,
           },
         });
+        history.push('/volunteer-dashboard');
       }
     } else {
       console.log('nonprofit');
@@ -87,8 +89,8 @@ const LoginDialogueBox = (props: DialogueProps) => {
             token: nonprofitData.data.loginNonprofit.token,
           },
         });
+        history.push('/nonprofit-dashboard');
       }
-      console.log(nonprofitData);
     }
   };
 
