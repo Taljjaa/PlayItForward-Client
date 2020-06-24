@@ -1,7 +1,10 @@
 // React imports
-import React, { useState } from "react";
+import React, { useState, SyntheticEvent } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useMutation, useApolloClient } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
-import UploadFile from "./UploadFile";
+import UploadFile from './UploadFile';
 
 // Type definitions
 type DialogueProps = {
@@ -9,16 +12,78 @@ type DialogueProps = {
   setIsVolunteer: any;
 };
 
+const REGISTER_VOLUNTEER = gql`
+  mutation registerVolunteer(
+    $username: String!
+    $password: String!
+    $confirmPassword: String!
+  ) {
+    registerVolunteer(
+      username: $username
+      password: $password
+      confirmPassword: $confirmPassword
+    ) {
+      ok
+      errors {
+        path
+        message
+      }
+      token
+      volunteer {
+        id
+      }
+    }
+  }
+`;
+
+const REGISTER_NONPROFIT = gql`
+  mutation registerNonprofit(
+    $username: String!
+    $password: String!
+    $confirmPassword: String!
+    $mission: String!
+    $description: String!
+    $displayName: String!
+    $contact: String!
+  ) {
+    registerNonprofit(
+      username: $username
+      password: $password
+      confirmPassword: $confirmPassword
+      mission: $mission
+      description: $description
+      displayName: $displayName
+      contact: $contact
+    ) {
+      ok
+      errors {
+        path
+        message
+      }
+      token
+      nonprofit {
+        id
+      }
+    }
+  }
+`;
+
 // Structure
 // Header, Text Fields, Radio Selection, Submit
 const SignUpDialogueBox = (props: DialogueProps) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [mission, setMission] = useState("");
-  const [description, setDescription] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [contact, setContact] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [mission, setMission] = useState('');
+  const [description, setDescription] = useState('');
+  const [displayName, setDisplayName] = useState('');
+  const [contact, setContact] = useState('');
+
+  const client = useApolloClient();
+  let history = useHistory();
+
+  const [registerVolunteer] = useMutation(REGISTER_VOLUNTEER);
+  const [registerNonprofit] = useMutation(REGISTER_NONPROFIT);
 
   const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
@@ -32,7 +97,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
 
   const onChangePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
-    setPasswordConfirm(e.target.value);
+    setConfirmPassword(e.target.value);
   };
 
   const onChangeMission = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,18 +120,53 @@ const SignUpDialogueBox = (props: DialogueProps) => {
     setContact(e.target.value);
   };
 
-  const onNonprofitRegister = () => {
-    // GraphQL mutation goes here for registering nonProfit
-    // attributes: username, password, mission, description, displayName, contact
-  };
-
-  const onVolunteerRegister = () => {
-    // GraphQL mutation goes here for registering volunteer
-    // attributes: username, password
+  const handleSubmit = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    if (props.isVolunteer) {
+      let volunteerData = await registerVolunteer({
+        variables: {
+          username,
+          password,
+          confirmPassword,
+        },
+      });
+      if (volunteerData.data.registerVolunteer.ok) {
+        client.writeData({
+          data: {
+            volunteerID: volunteerData.data.registerVolunteer.volunteer.id,
+            token: volunteerData.data.registerVolunteer.token,
+          },
+        });
+        history.push('/volunteer-dashboard');
+      }
+    } else {
+      let nonprofitData = await registerNonprofit({
+        variables: {
+          username,
+          password,
+          confirmPassword,
+          mission,
+          description,
+          displayName,
+          contact,
+        },
+      });
+      if (nonprofitData.data.registerNonprofit.ok) {
+        client.writeData({
+          data: {
+            nonprofitID: nonprofitData.data.registerNonprofit.nonprofit.id,
+            token: nonprofitData.data.registerNonprofit.token,
+          },
+        });
+        history.push('/nonprofit-dashboard');
+      }
+    }
   };
 
   return (
-    <div className="bg-blue-500 flex flex-col h-full px-4 pt-4">
+    <form
+      className="bg-blue-500 flex flex-col h-full px-4 pt-4"
+      onSubmit={handleSubmit}>
       {/* Header */}
       <p className="text-center text-white font-semibold text-xl pb-4">
         Sign Up!
@@ -90,7 +190,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
         type="password"
         placeholder="Re-type Password"
-        value={passwordConfirm}
+        value={confirmPassword}
         onChange={onChangePasswordConfirm}
       />
 
@@ -153,7 +253,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
           Register
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 
