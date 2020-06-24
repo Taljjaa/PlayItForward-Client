@@ -28,7 +28,6 @@ const GET_ALL_NONPROFITS = gql`
 
 const NonprofitCardCollection = () => {
   const { loading, error, data } = useQuery<getNonprofits>(GET_ALL_NONPROFITS);
-  console.log(data);
   if (loading || !data) return null;
   return (
     <div className="flex flex-col flex-grow items-center w-full overflow-auto">

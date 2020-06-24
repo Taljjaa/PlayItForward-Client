@@ -78,7 +78,6 @@ const LoginDialogueBox = (props: DialogueProps) => {
         history.push('/volunteer-dashboard');
       }
     } else {
-      console.log('nonprofit');
       let nonprofitData = await loginNonprofit({
         variables: { username, password },
       });
