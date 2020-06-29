@@ -1,8 +1,28 @@
 import React from "react";
 import NavBar from "../components/Navbar";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 import VolunteerGraphDisplay from "../components/VolunteerGraphDisplay";
+import { getVolunteer } from "../generated/getVolunteer";
+
+const id = 1; // replace with local storage/cache.
+
+//graphql query object returns all events
+const GET_VOLUNTEER = gql`
+  query getVolunteer($id: Int!) {
+    getVolunteer(id: $id) {
+      username
+    }
+  }
+`;
 
 const VolunteerDashboardPage = () => {
+  const { loading, error, data } = useQuery<getVolunteer>(GET_VOLUNTEER, {
+    variables: {
+      id
+    }
+  });
+  console.log(data);
   return (
     <div className="flex flex-col h-screen">
       {/* Navbar */}
