@@ -8,11 +8,11 @@
 // ====================================================
 
 export interface getNonprofits_getNonprofits {
-  __typename: 'Nonprofit';
+  __typename: "Nonprofit";
   id: number;
   logo: string;
   displayName: string;
-  mission: string | null;
+  mission: string;
 }
 
 export interface getNonprofits {

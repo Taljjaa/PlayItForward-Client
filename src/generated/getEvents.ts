@@ -8,12 +8,12 @@
 // ====================================================
 
 export interface getEvents_getEvents_nonprofit {
-  __typename: 'Nonprofit';
+  __typename: "Nonprofit";
   displayName: string;
 }
 
 export interface getEvents_getEvents {
-  __typename: 'Event';
+  __typename: "Event";
   id: number;
   image: string;
   title: string;

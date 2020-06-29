@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface singleUpload_singleUpload {
-  __typename: 'UploadedFileResponse';
+  __typename: "UploadedFileResponse";
   filename: string;
   mimetype: string;
   encoding: string;
