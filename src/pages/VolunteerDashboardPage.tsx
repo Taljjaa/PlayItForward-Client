@@ -1,13 +1,11 @@
-import React from "react";
-import NavBar from "../components/Navbar";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import VolunteerGraphDisplay from "../components/VolunteerGraphDisplay";
-import { getVolunteer } from "../generated/getVolunteer";
+import React from 'react';
+import NavBar from '../components/Navbar';
+import { useQuery, useApolloClient } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import VolunteerGraphDisplay from '../components/VolunteerGraphDisplay';
+import { getVolunteer } from '../generated/getVolunteer';
 
-const id = 1; // replace with local storage/cache.
-
-//graphql query object returns all events
+//graphql query object returns logged in volunteer based on cache
 const GET_VOLUNTEER = gql`
   query getVolunteer($id: Int!) {
     getVolunteer(id: $id) {
@@ -17,10 +15,19 @@ const GET_VOLUNTEER = gql`
 `;
 
 const VolunteerDashboardPage = () => {
+  //access client cache which should have volunteerID if logged in
+  const client = useApolloClient();
+  const volunteer = client.readQuery({
+    query: gql`
+      query getVolunteer {
+        volunteerID
+      }
+    `,
+  });
   const { loading, error, data } = useQuery<getVolunteer>(GET_VOLUNTEER, {
     variables: {
-      id
-    }
+      id: volunteer.volunteerID,
+    },
   });
   console.log(data);
   return (
