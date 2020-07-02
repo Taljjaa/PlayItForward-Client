@@ -13,16 +13,8 @@ type DialogueProps = {
 };
 
 const REGISTER_VOLUNTEER = gql`
-  mutation registerVolunteer(
-    $username: String!
-    $password: String!
-    $confirmPassword: String!
-  ) {
-    registerVolunteer(
-      username: $username
-      password: $password
-      confirmPassword: $confirmPassword
-    ) {
+  mutation registerVolunteer($username: String!, $password: String!) {
+    registerVolunteer(username: $username, password: $password) {
       ok
       errors {
         path
@@ -40,7 +32,6 @@ const REGISTER_NONPROFIT = gql`
   mutation registerNonprofit(
     $username: String!
     $password: String!
-    $confirmPassword: String!
     $mission: String!
     $description: String!
     $displayName: String!
@@ -49,7 +40,6 @@ const REGISTER_NONPROFIT = gql`
     registerNonprofit(
       username: $username
       password: $password
-      confirmPassword: $confirmPassword
       mission: $mission
       description: $description
       displayName: $displayName
@@ -71,6 +61,7 @@ const REGISTER_NONPROFIT = gql`
 // Structure
 // Header, Text Fields, Radio Selection, Submit
 const SignUpDialogueBox = (props: DialogueProps) => {
+  const [matching, setMatching] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -93,11 +84,21 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
     setPassword(e.target.value);
+    if (e.target.value === confirmPassword) {
+      setMatching(true);
+    } else {
+      setMatching(false);
+    }
   };
 
   const onChangePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
     setConfirmPassword(e.target.value);
+    if (e.target.value === password) {
+      setMatching(true);
+    } else {
+      setMatching(false);
+    }
   };
 
   const onChangeMission = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -180,14 +181,22 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         onChange={onChangeUsername}
       />
       <input
-        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        className={
+          matching
+            ? 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2'
+            : 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-red-500 mb-2'
+        }
         type="password"
         placeholder="Enter Password"
         value={password}
         onChange={onChangePassword}
       />
       <input
-        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        className={
+          matching
+            ? 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2'
+            : 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-red-500 mb-2'
+        }
         type="password"
         placeholder="Re-type Password"
         value={confirmPassword}
