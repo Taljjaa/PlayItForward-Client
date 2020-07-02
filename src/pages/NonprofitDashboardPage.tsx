@@ -14,20 +14,20 @@ const NonprofitDashboardPage = () => {
       <NavBar />
       <div className="flex flex-col flex-1">
         <div className="flex flex-1">
-          <div className="flex justify-center items-center h-full w-3/12 bg-blue-400">
-            <div className="ml-12 w-96 h-96 bg-blue-500">Some Picture</div>
+          <div className="flex justify-center items-center h-full w-3/12">
+            <div className="ml-12 w-96 h-96">Some Picture</div>
           </div>
-          <div className="flex flex-col flex-1 bg-blue-500">
-            <div className="flex justify-center items-center w-full h-24 bg-blue-400">
+          <div className="flex flex-col flex-1">
+            <div className="flex justify-center items-center w-full h-24">
               <h1 className="text-6xl">What Would You Like To Do?</h1>
             </div>
-            <div className="flex w-full flex-1 bg-blue-400 justify-center items-center">
+            <div className="flex w-full flex-1 justify-center items-center">
               {/* create event */}
               <CustomButton
                 buttonImages={imageRoster.buttons.newEvent}
                 style="h-40 w-40"
                 eventHandler={() => {
-                  console.log("Yerp");
+                  history.push("/create-event");
                 }}
               />
               {/* edit account button */}
