@@ -224,6 +224,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
       ) : null}
 
       {/* Radio Selection */}
+      <UploadFile />
       <div className="flex justify-around text-white">
         <label className="inline-flex items-center">
           <input
