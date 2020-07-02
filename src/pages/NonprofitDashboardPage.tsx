@@ -1,10 +1,13 @@
 import React from "react";
 import NavBar from "../components/Navbar";
-import { Link } from "react-router-dom";
 import NonprofitGraphDisplay from "../components/NonprofitGraphDisplay";
-import EditNonprofitPage from "./EditNonprofitPage";
+import CustomButton from "../components/CustomButton";
+import { imageRoster } from "../media/images/imageRoster";
+import { useHistory } from "react-router-dom";
 
 const NonprofitDashboardPage = () => {
+  let history = useHistory();
+
   return (
     <div className="flex flex-col h-screen">
       {/* Navbar */}
@@ -19,12 +22,22 @@ const NonprofitDashboardPage = () => {
               <h1 className="text-6xl">What Would You Like To Do?</h1>
             </div>
             <div className="flex w-full flex-1 bg-blue-400 justify-center items-center">
-              <Link to="/create-event">
-                <div className="mr-4 w-72 h-72 bg-blue-500">Host An Event</div>
-              </Link>
-              <Link to="/edit-nonprofit">
-                <div className="ml-4 w-72 h-72 bg-blue-500">Edit Account</div>
-              </Link>
+              {/* create event */}
+              <CustomButton
+                buttonImages={imageRoster.buttons.newEvent}
+                style="h-40 w-40"
+                eventHandler={() => {
+                  console.log("Yerp");
+                }}
+              />
+              {/* edit account button */}
+              <CustomButton
+                buttonImages={imageRoster.buttons.newEvent}
+                style="h-40 w-40"
+                eventHandler={() => {
+                  console.log("Yerp");
+                }}
+              />
             </div>
           </div>
         </div>
