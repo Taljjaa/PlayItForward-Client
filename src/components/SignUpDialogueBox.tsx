@@ -69,6 +69,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   const [description, setDescription] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [contact, setContact] = useState('');
+  const [icon, setIcon] = useState<File | null>(null);
 
   const client = useApolloClient();
   let history = useHistory();
@@ -119,6 +120,12 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   const onChangeContact = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
     setContact(e.target.value);
+  };
+
+  const onIconChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.persist();
+    console.log(e.target.files![0]);
+    setIcon(e.target.files![0]);
   };
 
   const handleSubmit = async (e: SyntheticEvent) => {
@@ -233,7 +240,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
       ) : null}
 
       {/* Radio Selection */}
-      <UploadFile />
+      <UploadFile onIconChange={onIconChange} />
       <div className="flex justify-around text-white">
         <label className="inline-flex items-center">
           <input
