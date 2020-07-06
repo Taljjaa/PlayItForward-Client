@@ -13,8 +13,12 @@ type DialogueProps = {
 };
 
 const REGISTER_VOLUNTEER = gql`
-  mutation registerVolunteer($username: String!, $password: String!) {
-    registerVolunteer(username: $username, password: $password) {
+  mutation registerVolunteer(
+    $username: String!
+    $password: String!
+    $file: Upload
+  ) {
+    registerVolunteer(username: $username, password: $password, file: $file) {
       ok
       errors {
         path
@@ -69,7 +73,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   const [description, setDescription] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [contact, setContact] = useState('');
-  const [icon, setIcon] = useState<File | null>(null);
+  const [file, setFile] = useState<File | null>(null);
 
   const client = useApolloClient();
   let history = useHistory();
@@ -125,7 +129,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   const onIconChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
     console.log(e.target.files![0]);
-    setIcon(e.target.files![0]);
+    setFile(e.target.files![0]);
   };
 
   const handleSubmit = async (e: SyntheticEvent) => {
@@ -135,7 +139,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         variables: {
           username,
           password,
-          confirmPassword,
+          file,
         },
       });
       if (volunteerData.data.registerVolunteer.ok) {
@@ -152,7 +156,6 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         variables: {
           username,
           password,
-          confirmPassword,
           mission,
           description,
           displayName,
