@@ -1,32 +1,13 @@
 import React from 'react';
-import gql from 'graphql-tag';
-import { useMutation } from '@apollo/react-hooks';
 
-const SINGLE_UPLOAD = gql`
-  mutation singleUpload($file: Upload!) {
-    singleUpload(file: $file) {
-      filename
-      mimetype
-      encoding
-      url
-    }
-  }
-`;
-
-const UploadFile = () => {
-  const [mutate, { loading, error }] = useMutation(SINGLE_UPLOAD);
-  const onChange = ({
-    target: {
-      validity,
-      files: [file],
-    },
-  }: any) => {
-    console.log({ variables: { file } });
-    validity.valid && mutate({ variables: { file } });
+const UploadFile = ({
+  onIconChange,
+}: {
+  onIconChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onIconChange(e);
   };
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{JSON.stringify(error, null, 2)}</div>;
 
   return (
     <React.Fragment>

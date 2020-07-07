@@ -15,10 +15,11 @@ import EditNonprofitPage from "./pages/EditNonprofitPage";
 
 //Imports from Apollo
 // import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-boost';
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { HttpLink } from "apollo-link-http";
-import { ApolloProvider } from "@apollo/react-hooks";
+
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { createUploadLink } from 'apollo-upload-client';
 
 //
 import "./App.css";
@@ -27,9 +28,9 @@ import "./App.css";
 const client = new ApolloClient({
   connectToDevTools: true,
   cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: "http://localhost:4000/"
-  })
+  link: createUploadLink({
+    uri: 'http://localhost:4000/',
+  }),
 });
 
 //ApolloProvider allows us to access the client from anywhere in the component tree

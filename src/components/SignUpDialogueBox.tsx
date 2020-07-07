@@ -16,13 +16,9 @@ const REGISTER_VOLUNTEER = gql`
   mutation registerVolunteer(
     $username: String!
     $password: String!
-    $confirmPassword: String!
+    $file: Upload
   ) {
-    registerVolunteer(
-      username: $username
-      password: $password
-      confirmPassword: $confirmPassword
-    ) {
+    registerVolunteer(username: $username, password: $password, file: $file) {
       ok
       errors {
         path
@@ -40,20 +36,20 @@ const REGISTER_NONPROFIT = gql`
   mutation registerNonprofit(
     $username: String!
     $password: String!
-    $confirmPassword: String!
     $mission: String!
     $description: String!
     $displayName: String!
     $contact: String!
+    $file: Upload
   ) {
     registerNonprofit(
       username: $username
       password: $password
-      confirmPassword: $confirmPassword
       mission: $mission
       description: $description
       displayName: $displayName
       contact: $contact
+      file: $file
     ) {
       ok
       errors {
@@ -71,6 +67,7 @@ const REGISTER_NONPROFIT = gql`
 // Structure
 // Header, Text Fields, Radio Selection, Submit
 const SignUpDialogueBox = (props: DialogueProps) => {
+  const [matching, setMatching] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -78,6 +75,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   const [description, setDescription] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [contact, setContact] = useState('');
+  const [file, setFile] = useState<File | null>(null);
 
   const client = useApolloClient();
   let history = useHistory();
@@ -93,11 +91,21 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
     setPassword(e.target.value);
+    if (e.target.value === confirmPassword) {
+      setMatching(true);
+    } else {
+      setMatching(false);
+    }
   };
 
   const onChangePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
     setConfirmPassword(e.target.value);
+    if (e.target.value === password) {
+      setMatching(true);
+    } else {
+      setMatching(false);
+    }
   };
 
   const onChangeMission = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -120,6 +128,12 @@ const SignUpDialogueBox = (props: DialogueProps) => {
     setContact(e.target.value);
   };
 
+  const onIconChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.persist();
+    console.log(e.target.files![0]);
+    setFile(e.target.files![0]);
+  };
+
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     if (props.isVolunteer) {
@@ -127,7 +141,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         variables: {
           username,
           password,
-          confirmPassword,
+          file,
         },
       });
       if (volunteerData.data.registerVolunteer.ok) {
@@ -144,11 +158,11 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         variables: {
           username,
           password,
-          confirmPassword,
           mission,
           description,
           displayName,
           contact,
+          file,
         },
       });
       if (nonprofitData.data.registerNonprofit.ok) {
@@ -180,14 +194,22 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         onChange={onChangeUsername}
       />
       <input
-        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        className={
+          matching
+            ? 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2'
+            : 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-red-500 mb-2'
+        }
         type="password"
         placeholder="Enter Password"
         value={password}
         onChange={onChangePassword}
       />
       <input
-        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        className={
+          matching
+            ? 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2'
+            : 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-red-500 mb-2'
+        }
         type="password"
         placeholder="Re-type Password"
         value={confirmPassword}
@@ -224,6 +246,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
       ) : null}
 
       {/* Radio Selection */}
+      <UploadFile onIconChange={onIconChange} />
       <div className="flex justify-around text-white">
         <label className="inline-flex items-center">
           <input
