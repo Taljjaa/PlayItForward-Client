@@ -40,6 +40,7 @@ const REGISTER_NONPROFIT = gql`
     $description: String!
     $displayName: String!
     $contact: String!
+    $file: Upload
   ) {
     registerNonprofit(
       username: $username
@@ -48,6 +49,7 @@ const REGISTER_NONPROFIT = gql`
       description: $description
       displayName: $displayName
       contact: $contact
+      file: $file
     ) {
       ok
       errors {
@@ -160,6 +162,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
           description,
           displayName,
           contact,
+          file,
         },
       });
       if (nonprofitData.data.registerNonprofit.ok) {
