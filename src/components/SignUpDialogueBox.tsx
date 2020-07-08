@@ -1,15 +1,25 @@
 // React imports
-import React, { useState, SyntheticEvent } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useMutation, useApolloClient } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-
+import { useForm } from 'react-hook-form';
 import UploadFile from './UploadFile';
 
 // Type definitions
 type DialogueProps = {
   isVolunteer: boolean;
   setIsVolunteer: any;
+};
+
+type Inputs = {
+  username: string;
+  password: string;
+  confirmPassword: string;
+  mission: string;
+  description: string;
+  displayName: string;
+  contact: string;
 };
 
 const REGISTER_VOLUNTEER = gql`
@@ -67,15 +77,9 @@ const REGISTER_NONPROFIT = gql`
 // Structure
 // Header, Text Fields, Radio Selection, Submit
 const SignUpDialogueBox = (props: DialogueProps) => {
-  const [matching, setMatching] = useState(true);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [mission, setMission] = useState('');
-  const [description, setDescription] = useState('');
-  const [displayName, setDisplayName] = useState('');
-  const [contact, setContact] = useState('');
   const [file, setFile] = useState<File | null>(null);
+
+  const { register, handleSubmit, errors, watch } = useForm<Inputs>();
 
   const client = useApolloClient();
   let history = useHistory();
@@ -83,60 +87,14 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   const [registerVolunteer] = useMutation(REGISTER_VOLUNTEER);
   const [registerNonprofit] = useMutation(REGISTER_NONPROFIT);
 
-  const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setUsername(e.target.value);
-  };
-
-  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setPassword(e.target.value);
-    if (e.target.value === confirmPassword) {
-      setMatching(true);
-    } else {
-      setMatching(false);
-    }
-  };
-
-  const onChangePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setConfirmPassword(e.target.value);
-    if (e.target.value === password) {
-      setMatching(true);
-    } else {
-      setMatching(false);
-    }
-  };
-
-  const onChangeMission = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setMission(e.target.value);
-  };
-
-  const onChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setDescription(e.target.value);
-  };
-
-  const onChangeDisplayName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setDisplayName(e.target.value);
-  };
-
-  const onChangeContact = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setContact(e.target.value);
-  };
-
   const onIconChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
-    console.log(e.target.files![0]);
     setFile(e.target.files![0]);
   };
 
-  const handleSubmit = async (e: SyntheticEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: Inputs) => {
     if (props.isVolunteer) {
+      const { username, password } = data;
       let volunteerData = await registerVolunteer({
         variables: {
           username,
@@ -154,6 +112,14 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         history.push('/volunteer-dashboard');
       }
     } else {
+      const {
+        username,
+        password,
+        mission,
+        description,
+        displayName,
+        contact,
+      } = data;
       let nonprofitData = await registerNonprofit({
         variables: {
           username,
@@ -180,68 +146,89 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   return (
     <form
       className="bg-blue-500 flex flex-col h-full px-4 pt-4"
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit(onSubmit)}>
       {/* Header */}
       <p className="text-center text-white font-semibold text-xl pb-4">
         Sign Up!
       </p>
-
       {/* Text Fields */}
       <input
-        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        name="username"
+        ref={register({ required: true })}
         placeholder="Enter Username"
-        value={username}
-        onChange={onChangeUsername}
+        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
       />
+      {errors.username && (
+        <span className="text-white">Username is required</span>
+      )}
       <input
-        className={
-          matching
-            ? 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2'
-            : 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-red-500 mb-2'
-        }
+        name="password"
         type="password"
+        ref={register({
+          required: true,
+          validate: value => value === watch('confirmPassword'),
+        })}
         placeholder="Enter Password"
-        value={password}
-        onChange={onChangePassword}
+        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
       />
+      {errors.password && (
+        <span className="text-white">Password is blank or doesn't match</span>
+      )}
       <input
-        className={
-          matching
-            ? 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2'
-            : 'text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-red-500 mb-2'
-        }
+        name="confirmPassword"
         type="password"
+        ref={register({
+          required: true,
+          validate: value => value === watch('password'),
+        })}
         placeholder="Re-type Password"
-        value={confirmPassword}
-        onChange={onChangePasswordConfirm}
+        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
       />
-
+      {errors.confirmPassword && (
+        <span className="text-white">Password is blank or doesn't match</span>
+      )}
       {!props.isVolunteer ? (
         <>
           <input
-            className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+            name="mission"
+            ref={register({ required: true })}
             placeholder="Enter Mission Statement"
-            value={mission}
-            onChange={onChangeMission}
-          />
-          <input
             className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+          />
+          {errors.mission && (
+            <span className="text-white">Mission statement is required</span>
+          )}
+          <input
+            name="description"
+            ref={register({ required: true })}
             placeholder="Enter Organization Description"
-            value={description}
-            onChange={onChangeDescription}
-          />
-          <input
             className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+          />
+          {errors.description && (
+            <span className="text-white">
+              Organization description is required
+            </span>
+          )}
+          <input
+            name="displayName"
+            ref={register({ required: true })}
             placeholder="Enter Organization Display Name"
-            value={displayName}
-            onChange={onChangeDisplayName}
-          />
-          <input
             className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
-            placeholder="Enter Organization Contact"
-            value={contact}
-            onChange={onChangeContact}
           />
+          {errors.displayName && (
+            <span className="text-white">
+              Organization display name is required
+            </span>
+          )}
+          <input
+            name="contact"
+            ref={register({ required: true })}
+            placeholder="Enter Organization Contact"
+            className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+          />
+          {errors.displayName && (
+            <span className="text-white">Organization contact is required</span>
+          )}
         </>
       ) : null}
 

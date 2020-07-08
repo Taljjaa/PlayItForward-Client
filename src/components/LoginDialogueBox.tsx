@@ -68,7 +68,6 @@ const LoginDialogueBox = (props: DialogueProps) => {
   }) => {
     if (props.isVolunteer) {
       let volunteerData = await loginVol({ variables: { username, password } });
-      console.log(volunteerData);
       if (volunteerData.data.loginVolunteer.ok) {
         client.writeData({
           data: {
