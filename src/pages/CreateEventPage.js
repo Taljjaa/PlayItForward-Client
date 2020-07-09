@@ -1,5 +1,10 @@
 import React, { useState, useCallback, useRef } from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow
+} from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng
@@ -35,6 +40,7 @@ const options = {
 
 const CreateEventPage = () => {
   const [marker, setMarker] = useState({ lat: 0, lng: 0 });
+  const [selected, setSelected] = useState(null);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries
@@ -68,6 +74,7 @@ const CreateEventPage = () => {
         <Marker
           key={Math.random()}
           position={marker}
+          onClick={() => setSelected(marker)}
           // icon={
           //   {
           //   url: SOME IMAGE,
@@ -76,6 +83,16 @@ const CreateEventPage = () => {
           //   anchor: new window.google.maps.Point(25, 25),
           // }}
         />
+
+        {selected ? (
+          <InfoWindow position={marker} onCloseClick={() => setSelected(null)}>
+            <div>
+              <h2>Loc Info</h2>
+              <p>{selected.lat}</p>
+              <p>{selected.lng}</p>
+            </div>
+          </InfoWindow>
+        ) : null}
       </GoogleMap>
     </div>
   );
