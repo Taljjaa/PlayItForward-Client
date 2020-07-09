@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -40,6 +40,18 @@ const CreateEventPage = () => {
     libraries
   });
 
+  const onMapClick = useCallback(e => {
+    setMarker({
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng()
+    });
+  }, []);
+
+  const mapRef = useRef();
+  const onMapLoad = useCallback(map => {
+    mapRef.current = map;
+  }, []);
+
   if (loadError) return <p>Error Loading Maps</p>;
   if (!isLoaded) return <p>Loading</p>;
 
@@ -50,14 +62,20 @@ const CreateEventPage = () => {
         zoom={8}
         center={center}
         options={options}
-        onClick={e => {
-          setMarker({
-            lat: e.latLng.lat(),
-            lng: e.latLng.lng()
-          });
-        }}
+        onClick={onMapClick}
+        onLoad={onMapLoad}
       >
-        <Marker key={Math.random()} position={marker} />
+        <Marker
+          key={Math.random()}
+          position={marker}
+          // icon={
+          //   {
+          //   url: SOME IMAGE,
+          //   scaledSize: new window.google.maps.Size(50, 50),
+          //   origin: new window.google.maps.Point(0, 0),
+          //   anchor: new window.google.maps.Point(25, 25),
+          // }}
+        />
       </GoogleMap>
     </div>
   );
