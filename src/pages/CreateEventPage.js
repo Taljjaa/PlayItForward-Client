@@ -18,7 +18,6 @@ import {
   Combobox,
   ComboboxInput
 } from "@reach/combobox";
-import { formatRelative } from "date-fns";
 import "@reach/combobox/styles.css";
 import { mapStyles } from "../media/mapStyles/mapStyles";
 
@@ -62,7 +61,7 @@ const CreateEventPage = () => {
 
   const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(14);
+    mapRef.current.setZoom(20);
   }, []);
 
   if (loadError) return <p>Error Loading Maps</p>;
@@ -113,7 +112,7 @@ const Search = ({ panTo }) => {
     value,
     suggestions: { status, data },
     setValue,
-    clearSuggestion
+    clearSuggestions
   } = usePlacesAutocomplete({
     requestOptions: {
       location: {
@@ -127,6 +126,9 @@ const Search = ({ panTo }) => {
   return (
     <Combobox
       onSelect={async address => {
+        setValue(address, false);
+        clearSuggestions();
+
         try {
           const results = await getGeocode({ address });
           const { lat, lng } = await getLatLng(results[0]);
