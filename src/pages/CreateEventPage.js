@@ -13,7 +13,7 @@ import {
 } from "@reach/combobox";
 import { formatRelative } from "date-fns";
 import "@reach/combobox/styles.css";
-import mapStyles from "../media/mapStyles/mapStyles";
+import { mapStyles } from "../media/mapStyles/mapStyles";
 
 const libraries = ["places"];
 
@@ -25,6 +25,12 @@ const mapContainerStyle = {
 const center = {
   lat: 47.571537,
   lng: -122.33956
+};
+
+const options = {
+  styles: mapStyles,
+  disableDefaultUI: true,
+  zoomControl: true
 };
 
 const CreateEventPage = () => {
@@ -42,6 +48,7 @@ const CreateEventPage = () => {
         mapContainerStyle={mapContainerStyle}
         zoom={8}
         center={center}
+        options={options}
       ></GoogleMap>
     </div>
   );
