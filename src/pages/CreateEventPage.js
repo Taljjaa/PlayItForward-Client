@@ -14,7 +14,9 @@ import {
   ComboBoxInput,
   ComboboxPopover,
   ComboboxList,
-  ComboboxOption
+  ComboboxOption,
+  Combobox,
+  ComboboxInput
 } from "@reach/combobox";
 import { formatRelative } from "date-fns";
 import "@reach/combobox/styles.css";
@@ -63,6 +65,8 @@ const CreateEventPage = () => {
 
   return (
     <div>
+      <Search />
+
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={8}
@@ -95,6 +99,47 @@ const CreateEventPage = () => {
         ) : null}
       </GoogleMap>
     </div>
+  );
+};
+
+const Search = () => {
+  const {
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+    clearSuggestion
+  } = usePlacesAutocomplete({
+    requestOptions: {
+      location: {
+        lat: () => 47.571537,
+        lng: () => -122.33956
+      },
+      radius: 200 * 1000
+    }
+  });
+
+  return (
+    <Combobox
+      onSelect={address => {
+        console.log(address);
+      }}
+    >
+      <ComboboxInput
+        input={value}
+        onChange={e => {
+          setValue(e.target.value);
+        }}
+        disabled={!ready}
+        placeholder="Enter Address"
+      />
+      <ComboboxPopover>
+        {status === "OK" &&
+          data.map(({ id, description }) => (
+            <ComboboxOption key={id} value={description} />
+          ))}
+      </ComboboxPopover>
+    </Combobox>
   );
 };
 
