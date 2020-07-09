@@ -60,12 +60,17 @@ const CreateEventPage = () => {
     mapRef.current = map;
   }, []);
 
+  const panTo = useCallback(({ lat, lng }) => {
+    mapRef.current.panTo({ lat, lng });
+    mapRef.current.setZoom(14);
+  }, []);
+
   if (loadError) return <p>Error Loading Maps</p>;
   if (!isLoaded) return <p>Loading</p>;
 
   return (
     <div>
-      <Search />
+      <Search panTo={panTo} />
 
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
@@ -102,7 +107,7 @@ const CreateEventPage = () => {
   );
 };
 
-const Search = () => {
+const Search = ({ panTo }) => {
   const {
     ready,
     value,
@@ -121,8 +126,14 @@ const Search = () => {
 
   return (
     <Combobox
-      onSelect={address => {
-        console.log(address);
+      onSelect={async address => {
+        try {
+          const results = await getGeocode({ address });
+          const { lat, lng } = await getLatLng(results[0]);
+          panTo({ lat, lng });
+        } catch (error) {
+          console.log("error!");
+        }
       }}
     >
       <ComboboxInput
@@ -136,7 +147,7 @@ const Search = () => {
       <ComboboxPopover>
         {status === "OK" &&
           data.map(({ id, description }) => (
-            <ComboboxOption key={id} value={description} />
+            <ComboboxOption key={Math.random()} value={description} />
           ))}
       </ComboboxPopover>
     </Combobox>
