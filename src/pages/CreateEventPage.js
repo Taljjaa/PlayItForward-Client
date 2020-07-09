@@ -17,6 +17,16 @@ import mapStyles from "../media/mapStyles/mapStyles";
 
 const libraries = ["places"];
 
+const mapContainerStyle = {
+  width: "100vw",
+  height: "100vh"
+};
+
+const center = {
+  lat: 47.571537,
+  lng: -122.33956
+};
+
 const CreateEventPage = () => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -26,7 +36,15 @@ const CreateEventPage = () => {
   if (loadError) return <p>Error Loading Maps</p>;
   if (!isLoaded) return <p>Loading</p>;
 
-  return <div>Map</div>;
+  return (
+    <div>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={8}
+        center={center}
+      ></GoogleMap>
+    </div>
+  );
 };
 
 export default CreateEventPage;
