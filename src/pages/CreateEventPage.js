@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -34,6 +34,7 @@ const options = {
 };
 
 const CreateEventPage = () => {
+  const [marker, setMarker] = useState({ lat: 0, lng: 0 });
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries
@@ -49,7 +50,15 @@ const CreateEventPage = () => {
         zoom={8}
         center={center}
         options={options}
-      ></GoogleMap>
+        onClick={e => {
+          setMarker({
+            lat: e.latLng.lat(),
+            lng: e.latLng.lng()
+          });
+        }}
+      >
+        <Marker key={Math.random()} position={marker} />
+      </GoogleMap>
     </div>
   );
 };
