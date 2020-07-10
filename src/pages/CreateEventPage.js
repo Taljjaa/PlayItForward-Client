@@ -34,7 +34,7 @@ const center = {
 };
 
 const options = {
-  styles: mapStyles,
+  // styles: mapStyles,
   disableDefaultUI: true,
   zoomControl: true
 };
@@ -42,6 +42,7 @@ const options = {
 const CreateEventPage = () => {
   const [marker, setMarker] = useState({ lat: 0, lng: 0 });
   const [selected, setSelected] = useState(null);
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries
@@ -55,6 +56,7 @@ const CreateEventPage = () => {
   }, []);
 
   const mapRef = useRef();
+
   const onMapLoad = useCallback(map => {
     mapRef.current = map;
   }, []);
@@ -69,7 +71,7 @@ const CreateEventPage = () => {
 
   return (
     <div>
-      <Search panTo={panTo} />
+      <Search panTo={panTo} setMarker={setMarker} />
 
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
@@ -106,7 +108,7 @@ const CreateEventPage = () => {
   );
 };
 
-const Search = ({ panTo }) => {
+const Search = ({ panTo, setMarker }) => {
   const {
     ready,
     value,
@@ -133,6 +135,7 @@ const Search = ({ panTo }) => {
           const results = await getGeocode({ address });
           const { lat, lng } = await getLatLng(results[0]);
           panTo({ lat, lng });
+          setMarker({ lat, lng });
         } catch (error) {
           console.log("error!");
         }
@@ -149,7 +152,7 @@ const Search = ({ panTo }) => {
       <ComboboxPopover>
         {status === "OK" &&
           data.map(({ id, description }) => (
-            <ComboboxOption key={Math.random()} value={description} />
+            <ComboboxOption key={id} value={description} />
           ))}
       </ComboboxPopover>
     </Combobox>
