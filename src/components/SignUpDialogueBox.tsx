@@ -80,6 +80,15 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   const [file, setFile] = useState<File | null>(null);
 
   const { register, handleSubmit, errors, watch } = useForm<Inputs>();
+  const {
+    username,
+    password,
+    displayName,
+    contact,
+    mission,
+    description,
+    confirmPassword,
+  } = errors;
 
   const client = useApolloClient();
   let history = useHistory();
@@ -158,9 +167,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         placeholder="Enter Username"
         className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
       />
-      {errors.username && (
-        <span className="text-white">Username is required</span>
-      )}
+      {username && <span className="text-white">Username is required</span>}
       <input
         name="password"
         type="password"
@@ -171,7 +178,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         placeholder="Enter Password"
         className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
       />
-      {errors.password && (
+      {password && (
         <span className="text-white">Password is blank or doesn't match</span>
       )}
       <input
@@ -184,7 +191,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         placeholder="Re-type Password"
         className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
       />
-      {errors.confirmPassword && (
+      {confirmPassword && (
         <span className="text-white">Password is blank or doesn't match</span>
       )}
       {!props.isVolunteer ? (
@@ -195,7 +202,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
             placeholder="Enter Mission Statement"
             className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
           />
-          {errors.mission && (
+          {mission && (
             <span className="text-white">Mission statement is required</span>
           )}
           <input
@@ -204,7 +211,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
             placeholder="Enter Organization Description"
             className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
           />
-          {errors.description && (
+          {description && (
             <span className="text-white">
               Organization description is required
             </span>
@@ -215,7 +222,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
             placeholder="Enter Organization Display Name"
             className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
           />
-          {errors.displayName && (
+          {displayName && (
             <span className="text-white">
               Organization display name is required
             </span>
@@ -226,7 +233,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
             placeholder="Enter Organization Contact"
             className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
           />
-          {errors.displayName && (
+          {contact && (
             <span className="text-white">Organization contact is required</span>
           )}
         </>
