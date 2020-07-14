@@ -1,32 +1,32 @@
 // React Imports
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // Custom Imports
-import LandingPage from './pages/LandingPage';
-import EventListPage from './pages/EventListPage';
-import NonprofitListPage from './pages/NonprofitListPage';
-import AboutPage from './pages/AboutPage';
-import AuthPage from './pages/AuthPage';
-import NonprofitDashboardPage from './pages/NonprofitDashboardPage';
-import VolunteerDashboardPage from './pages/VolunteerDashboardPage';
-import CreateEventPage from './pages/CreateEventPage';
-import EditNonprofitPage from './pages/EditNonprofitPage';
+import LandingPage from "./pages/LandingPage";
+import EventListPage from "./pages/EventListPage";
+import NonprofitListPage from "./pages/NonprofitListPage";
+import AboutPage from "./pages/AboutPage";
+import AuthPage from "./pages/AuthPage";
+import NonprofitDashboardPage from "./pages/NonprofitDashboardPage";
+import VolunteerDashboardPage from "./pages/VolunteerDashboardPage";
+import CreateEventPage from "./pages/CreateEventPage";
+import EditNonprofitPage from "./pages/EditNonprofitPage";
 
 //Imports from Apollo
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { createUploadLink } from 'apollo-upload-client';
-import { ApolloProvider } from '@apollo/react-hooks';
-import './App.css';
+import { ApolloClient } from "apollo-client";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { createUploadLink } from "apollo-upload-client";
+import { ApolloProvider } from "@apollo/react-hooks";
+import "./App.css";
 
 //the client represents the endpoint to our graphql server
 const client = new ApolloClient({
   connectToDevTools: true,
   cache: new InMemoryCache(),
   link: createUploadLink({
-    uri: 'http://localhost:4000/',
-  }),
+    uri: "http://localhost:4000/"
+  })
 });
 
 //ApolloProvider allows us to access the client from anywhere in the component tree

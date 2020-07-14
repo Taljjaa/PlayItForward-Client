@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const UploadFile = ({
-  onIconChange,
+  onIconChange
 }: {
   onIconChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {

@@ -1,8 +1,8 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { useMutation, useApolloClient } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import { useForm } from 'react-hook-form';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { useMutation, useApolloClient } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import { useForm } from "react-hook-form";
 
 // Type definitions
 type DialogueProps = {
@@ -61,7 +61,7 @@ const LoginDialogueBox = (props: DialogueProps) => {
 
   const onSubmit = async ({
     username,
-    password,
+    password
   }: {
     username: string;
     password: string;
@@ -72,24 +72,24 @@ const LoginDialogueBox = (props: DialogueProps) => {
         client.writeData({
           data: {
             volunteerID: volunteerData.data.loginVolunteer.volunteer.id,
-            token: volunteerData.data.loginVolunteer.token,
-          },
+            token: volunteerData.data.loginVolunteer.token
+          }
         });
-        history.push('/volunteer-dashboard');
+        history.push("/volunteer-dashboard");
       }
     } else {
       let nonprofitData = await loginNonprofit({
-        variables: { username, password },
+        variables: { username, password }
       });
 
       if (nonprofitData.data.loginNonprofit.ok) {
         client.writeData({
           data: {
             nonprofitID: nonprofitData.data.loginNonprofit.nonprofit.id,
-            token: nonprofitData.data.loginNonprofit.token,
-          },
+            token: nonprofitData.data.loginNonprofit.token
+          }
         });
-        history.push('/nonprofit-dashboard');
+        history.push("/nonprofit-dashboard");
       }
     }
   };
@@ -97,7 +97,8 @@ const LoginDialogueBox = (props: DialogueProps) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-blue-500 flex flex-col h-full w-full px-4 pt-4">
+      className="bg-blue-500 flex flex-col h-full w-full px-4 pt-4"
+    >
       {/* Header */}
       <p className="text-center text-white font-semibold text-xl pb-4">
         Welcome Back!
