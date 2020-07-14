@@ -102,7 +102,6 @@ const LoginDialogueBox = (props: DialogueProps) => {
       <p className="text-center text-white font-semibold text-xl pb-4">
         Welcome Back!
       </p>
-
       {/* Text Fields */}
       <input
         name="username"
@@ -123,6 +122,29 @@ const LoginDialogueBox = (props: DialogueProps) => {
       {errors.password && (
         <span className="text-white">Password is required</span>
       )}
+      {/* Radio Selection */}
+      <div className="flex justify-around text-white">
+        <label className="inline-flex items-center">
+          <input
+            type="radio"
+            className="form-radio"
+            name="accountType"
+            checked={props.isVolunteer}
+            onClick={() => props.setIsVolunteer(true)}
+          />
+          <span className="ml-2">Volunteer</span>
+        </label>
+        <label className="inline-flex items-center">
+          <input
+            type="radio"
+            className="form-radio"
+            name="accountType"
+            checked={!props.isVolunteer}
+            onClick={() => props.setIsVolunteer(false)}
+          />
+          <span className="ml-2">Nonprofit</span>
+        </label>
+      </div>
       {/* Submit Button */}
       <div className="flex justify-center">
         <button className="bg-blue-600 w-24 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-4 mb-2">
