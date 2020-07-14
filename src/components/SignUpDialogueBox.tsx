@@ -1,10 +1,10 @@
 // React imports
-import React, { useState, SyntheticEvent } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useMutation, useApolloClient } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-
-import UploadFile from './UploadFile';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useMutation, useApolloClient } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import { useForm } from "react-hook-form";
+import UploadFile from "./UploadFile";
 
 // Type definitions
 type DialogueProps = {
@@ -12,17 +12,23 @@ type DialogueProps = {
   setIsVolunteer: any;
 };
 
+type Inputs = {
+  username: string;
+  password: string;
+  confirmPassword: string;
+  mission: string;
+  description: string;
+  displayName: string;
+  contact: string;
+};
+
 const REGISTER_VOLUNTEER = gql`
   mutation registerVolunteer(
     $username: String!
     $password: String!
-    $confirmPassword: String!
+    $file: Upload
   ) {
-    registerVolunteer(
-      username: $username
-      password: $password
-      confirmPassword: $confirmPassword
-    ) {
+    registerVolunteer(username: $username, password: $password, file: $file) {
       ok
       errors {
         path
@@ -40,20 +46,20 @@ const REGISTER_NONPROFIT = gql`
   mutation registerNonprofit(
     $username: String!
     $password: String!
-    $confirmPassword: String!
     $mission: String!
     $description: String!
     $displayName: String!
     $contact: String!
+    $file: Upload
   ) {
     registerNonprofit(
       username: $username
       password: $password
-      confirmPassword: $confirmPassword
       mission: $mission
       description: $description
       displayName: $displayName
       contact: $contact
+      file: $file
     ) {
       ok
       errors {
@@ -71,13 +77,18 @@ const REGISTER_NONPROFIT = gql`
 // Structure
 // Header, Text Fields, Radio Selection, Submit
 const SignUpDialogueBox = (props: DialogueProps) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [mission, setMission] = useState('');
-  const [description, setDescription] = useState('');
-  const [displayName, setDisplayName] = useState('');
-  const [contact, setContact] = useState('');
+  const [file, setFile] = useState<File | null>(null);
+
+  const { register, handleSubmit, errors, watch } = useForm<Inputs>();
+  const {
+    username,
+    password,
+    displayName,
+    contact,
+    mission,
+    description,
+    confirmPassword
+  } = errors;
 
   const client = useApolloClient();
   let history = useHistory();
@@ -85,80 +96,58 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   const [registerVolunteer] = useMutation(REGISTER_VOLUNTEER);
   const [registerNonprofit] = useMutation(REGISTER_NONPROFIT);
 
-  const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onIconChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
-    setUsername(e.target.value);
+    setFile(e.target.files![0]);
   };
 
-  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setPassword(e.target.value);
-  };
-
-  const onChangePasswordConfirm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setConfirmPassword(e.target.value);
-  };
-
-  const onChangeMission = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setMission(e.target.value);
-  };
-
-  const onChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setDescription(e.target.value);
-  };
-
-  const onChangeDisplayName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setDisplayName(e.target.value);
-  };
-
-  const onChangeContact = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    setContact(e.target.value);
-  };
-
-  const handleSubmit = async (e: SyntheticEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: Inputs) => {
     if (props.isVolunteer) {
+      const { username, password } = data;
       let volunteerData = await registerVolunteer({
         variables: {
           username,
           password,
-          confirmPassword,
-        },
+          file
+        }
       });
       if (volunteerData.data.registerVolunteer.ok) {
         client.writeData({
           data: {
             volunteerID: volunteerData.data.registerVolunteer.volunteer.id,
-            token: volunteerData.data.registerVolunteer.token,
-          },
+            token: volunteerData.data.registerVolunteer.token
+          }
         });
-        history.push('/volunteer-dashboard');
+        history.push("/volunteer-dashboard");
       }
     } else {
+      const {
+        username,
+        password,
+        mission,
+        description,
+        displayName,
+        contact
+      } = data;
       let nonprofitData = await registerNonprofit({
         variables: {
           username,
           password,
-          confirmPassword,
           mission,
           description,
           displayName,
           contact,
-        },
+          file
+        }
       });
       if (nonprofitData.data.registerNonprofit.ok) {
         client.writeData({
           data: {
             nonprofitID: nonprofitData.data.registerNonprofit.nonprofit.id,
-            token: nonprofitData.data.registerNonprofit.token,
-          },
+            token: nonprofitData.data.registerNonprofit.token
+          }
         });
-        history.push('/nonprofit-dashboard');
+        history.push("/nonprofit-dashboard");
       }
     }
   };
@@ -166,64 +155,93 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   return (
     <form
       className="bg-blue-500 flex flex-col h-full px-4 pt-4"
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit(onSubmit)}
+    >
       {/* Header */}
       <p className="text-center text-white font-semibold text-xl pb-4">
         Sign Up!
       </p>
-
       {/* Text Fields */}
       <input
-        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        name="username"
+        ref={register({ required: true })}
         placeholder="Enter Username"
-        value={username}
-        onChange={onChangeUsername}
-      />
-      <input
         className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+      />
+      {username && <span className="text-white">Username is required</span>}
+      <input
+        name="password"
         type="password"
+        ref={register({
+          required: true,
+          validate: value => value === watch("confirmPassword")
+        })}
         placeholder="Enter Password"
-        value={password}
-        onChange={onChangePassword}
-      />
-      <input
         className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
-        type="password"
-        placeholder="Re-type Password"
-        value={confirmPassword}
-        onChange={onChangePasswordConfirm}
       />
-
+      {password && (
+        <span className="text-white">Password is blank or doesn't match</span>
+      )}
+      <input
+        name="confirmPassword"
+        type="password"
+        ref={register({
+          required: true,
+          validate: value => value === watch("password")
+        })}
+        placeholder="Re-type Password"
+        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+      />
+      {confirmPassword && (
+        <span className="text-white">Password is blank or doesn't match</span>
+      )}
       {!props.isVolunteer ? (
         <>
           <input
-            className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+            name="mission"
+            ref={register({ required: true })}
             placeholder="Enter Mission Statement"
-            value={mission}
-            onChange={onChangeMission}
-          />
-          <input
             className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+          />
+          {mission && (
+            <span className="text-white">Mission statement is required</span>
+          )}
+          <input
+            name="description"
+            ref={register({ required: true })}
             placeholder="Enter Organization Description"
-            value={description}
-            onChange={onChangeDescription}
-          />
-          <input
             className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+          />
+          {description && (
+            <span className="text-white">
+              Organization description is required
+            </span>
+          )}
+          <input
+            name="displayName"
+            ref={register({ required: true })}
             placeholder="Enter Organization Display Name"
-            value={displayName}
-            onChange={onChangeDisplayName}
-          />
-          <input
             className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
-            placeholder="Enter Organization Contact"
-            value={contact}
-            onChange={onChangeContact}
           />
+          {displayName && (
+            <span className="text-white">
+              Organization display name is required
+            </span>
+          )}
+          <input
+            name="contact"
+            ref={register({ required: true })}
+            placeholder="Enter Organization Contact"
+            className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+          />
+          {contact && (
+            <span className="text-white">Organization contact is required</span>
+          )}
         </>
       ) : null}
 
       {/* Radio Selection */}
+      <UploadFile onIconChange={onIconChange} />
       <div className="flex justify-around text-white">
         <label className="inline-flex items-center">
           <input

@@ -14,20 +14,17 @@ import CreateEventPage from "./pages/CreateEventPage";
 import EditNonprofitPage from "./pages/EditNonprofitPage";
 
 //Imports from Apollo
-// import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-boost';
 import { ApolloClient } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import { HttpLink } from "apollo-link-http";
+import { createUploadLink } from "apollo-upload-client";
 import { ApolloProvider } from "@apollo/react-hooks";
-
-//
 import "./App.css";
 
 //the client represents the endpoint to our graphql server
 const client = new ApolloClient({
   connectToDevTools: true,
   cache: new InMemoryCache(),
-  link: new HttpLink({
+  link: createUploadLink({
     uri: "http://localhost:4000/"
   })
 });
