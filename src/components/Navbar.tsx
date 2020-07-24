@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import NavbarOptions from './NavbarOptions';
 import DropdownOptions from './DropdownOptions';
@@ -7,6 +7,17 @@ import DropdownOptions from './DropdownOptions';
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (
+      localStorage.getItem('volunteerId') ||
+      localStorage.getItem('nonprofitId')
+    ) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }, [loggedIn]);
 
   const onHamburgerClick = (e: any) => {
     setExpanded(!expanded);
