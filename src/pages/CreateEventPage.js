@@ -82,7 +82,7 @@ const CreateEventPage = () => {
   const nonprofitId = parseInt(localStorage.getItem('nonprofitId'));
 
   const onSubmit = async () => {
-    const eventCreateData = await createEvent({
+    createEvent({
       variables: {
         title,
         date,
