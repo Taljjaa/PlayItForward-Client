@@ -1,10 +1,10 @@
 // React imports
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useMutation, useApolloClient } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import { useForm } from "react-hook-form";
-import UploadFile from "./UploadFile";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { useForm } from 'react-hook-form';
+import UploadFile from './UploadFile';
 
 // Type definitions
 type DialogueProps = {
@@ -87,10 +87,9 @@ const SignUpDialogueBox = (props: DialogueProps) => {
     contact,
     mission,
     description,
-    confirmPassword
+    confirmPassword,
   } = errors;
 
-  const client = useApolloClient();
   let history = useHistory();
 
   const [registerVolunteer] = useMutation(REGISTER_VOLUNTEER);
@@ -108,17 +107,15 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         variables: {
           username,
           password,
-          file
-        }
+          file,
+        },
       });
       if (volunteerData.data.registerVolunteer.ok) {
-        client.writeData({
-          data: {
-            volunteerID: volunteerData.data.registerVolunteer.volunteer.id,
-            token: volunteerData.data.registerVolunteer.token
-          }
-        });
-        history.push("/volunteer-dashboard");
+        localStorage.setItem(
+          'volunteerId',
+          volunteerData.data.registerVolunteer.volunteer.id,
+        );
+        history.push('/volunteer-dashboard');
       }
     } else {
       const {
@@ -127,7 +124,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         mission,
         description,
         displayName,
-        contact
+        contact,
       } = data;
       let nonprofitData = await registerNonprofit({
         variables: {
@@ -137,17 +134,15 @@ const SignUpDialogueBox = (props: DialogueProps) => {
           description,
           displayName,
           contact,
-          file
-        }
+          file,
+        },
       });
       if (nonprofitData.data.registerNonprofit.ok) {
-        client.writeData({
-          data: {
-            nonprofitID: nonprofitData.data.registerNonprofit.nonprofit.id,
-            token: nonprofitData.data.registerNonprofit.token
-          }
-        });
-        history.push("/nonprofit-dashboard");
+        localStorage.setItem(
+          'nonprofitId',
+          nonprofitData.data.registerNonprofit.nonprofit.id,
+        );
+        history.push('/nonprofit-dashboard');
       }
     }
   };
@@ -155,8 +150,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   return (
     <form
       className="bg-blue-500 flex flex-col h-full px-4 pt-4"
-      onSubmit={handleSubmit(onSubmit)}
-    >
+      onSubmit={handleSubmit(onSubmit)}>
       {/* Header */}
       <p className="text-center text-white font-semibold text-xl pb-4">
         Sign Up!
@@ -174,7 +168,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         type="password"
         ref={register({
           required: true,
-          validate: value => value === watch("confirmPassword")
+          validate: value => value === watch('confirmPassword'),
         })}
         placeholder="Enter Password"
         className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
@@ -187,7 +181,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
         type="password"
         ref={register({
           required: true,
-          validate: value => value === watch("password")
+          validate: value => value === watch('password'),
         })}
         placeholder="Re-type Password"
         className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
