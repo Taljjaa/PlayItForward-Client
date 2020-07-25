@@ -8,18 +8,18 @@
 // ====================================================
 
 export interface registerNonprofit_registerNonprofit_errors {
-  __typename: "Error";
+  __typename: 'Error';
   path: string;
   message: string | null;
 }
 
 export interface registerNonprofit_registerNonprofit_nonprofit {
-  __typename: "Nonprofit";
+  __typename: 'Nonprofit';
   id: number;
 }
 
 export interface registerNonprofit_registerNonprofit {
-  __typename: "LoginResponse";
+  __typename: 'LoginResponse';
   ok: boolean;
   errors: registerNonprofit_registerNonprofit_errors[] | null;
   token: string | null;
@@ -33,9 +33,9 @@ export interface registerNonprofit {
 export interface registerNonprofitVariables {
   username: string;
   password: string;
-  confirmPassword: string;
   mission: string;
   description: string;
   displayName: string;
   contact: string;
+  file?: any | null;
 }
