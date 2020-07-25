@@ -31,13 +31,19 @@ const NonprofitDashboardPage = () => {
 
   const nonprofitId = parseInt(localStorage.getItem('nonprofitId')!);
 
-  const { error, data } = useQuery<getNonprofit>(GET_NONPROFIT, {
+  const { loading, data } = useQuery<getNonprofit>(GET_NONPROFIT, {
     variables: {
       id: nonprofitId,
     },
   });
 
   console.log(data);
+
+  if (loading || !data) {
+    return null;
+  }
+
+  const { displayName, logo } = data.getNonprofit;
 
   return (
     <div className="flex flex-col h-screen">
@@ -46,7 +52,8 @@ const NonprofitDashboardPage = () => {
       <div className="flex flex-col flex-1">
         <div className="flex flex-1">
           <div className="flex justify-center items-center h-full w-3/12">
-            <div className="ml-12 w-96 h-96">Some Picture</div>
+            <p>{displayName}</p>
+            <img src={logo} alt={`${displayName} logo`} />
           </div>
           <div className="flex flex-col flex-1">
             <div className="flex justify-center items-center w-full h-24">
