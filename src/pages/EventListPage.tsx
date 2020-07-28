@@ -27,7 +27,7 @@ const EventListPage = () => {
       <EventSearchFilter />
 
       {/* Event List */}
-      <div className="event-list-pg flex flex-col items-center w-screen h-full overflow-scroll">
+      <div className="event-list-pg flex flex-col items-center w-screen h-full">
         <h1 className="event-list-pg-header font-bold text-xl">
           EVENTS LISTED
         </h1>

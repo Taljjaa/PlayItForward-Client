@@ -36,8 +36,8 @@ const EventCardCollection = () => {
   return (
     <div>
       {!error ? (
-        <div className="event-list-pg-events-container flex justify-center items-center">
-          <div className="flex flex-col xl:flex-row justify-center items-center w-screen">
+        <div>
+          <div>
             {/* List Of Events from Props */}
             {data.getEvents.map(event => {
               return <EventCard event={event} key={event.id} />;
