@@ -8,18 +8,18 @@
 // ====================================================
 
 export interface registerVolunteer_registerVolunteer_errors {
-  __typename: "Error";
+  __typename: 'Error';
   path: string;
   message: string | null;
 }
 
 export interface registerVolunteer_registerVolunteer_volunteer {
-  __typename: "Volunteer";
+  __typename: 'Volunteer';
   id: number;
 }
 
 export interface registerVolunteer_registerVolunteer {
-  __typename: "LoginResponse";
+  __typename: 'LoginResponse';
   ok: boolean;
   errors: registerVolunteer_registerVolunteer_errors[] | null;
   token: string | null;
@@ -33,5 +33,5 @@ export interface registerVolunteer {
 export interface registerVolunteerVariables {
   username: string;
   password: string;
-  confirmPassword: string;
+  file?: any | null;
 }

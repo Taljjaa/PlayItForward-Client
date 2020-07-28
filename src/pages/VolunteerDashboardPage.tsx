@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 import VolunteerGraphDisplay from '../components/VolunteerGraphDisplay';
 import { getVolunteer } from '../generated/getVolunteer';
 
-//graphql query object returns logged in volunteer based on cache
+//graphql query object returns logged in volunteer based on localStorage
 const GET_VOLUNTEER = gql`
   query getVolunteer($id: Int!) {
     getVolunteer(id: $id) {
