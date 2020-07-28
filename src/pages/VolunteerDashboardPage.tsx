@@ -17,17 +17,14 @@ const GET_VOLUNTEER = gql`
 const VolunteerDashboardPage = () => {
   const volunteerId = parseInt(localStorage.getItem('volunteerId')!);
 
-  const { error, data } = useQuery<getVolunteer>(GET_VOLUNTEER, {
+  const { data } = useQuery<getVolunteer>(GET_VOLUNTEER, {
     variables: {
       id: volunteerId,
     },
   });
 
-  if (error) {
-    console.log('hi', error);
-  }
-
   console.log(data);
+
   return (
     <div className="flex flex-col h-screen">
       {/* Navbar */}
