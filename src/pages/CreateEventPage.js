@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef } from 'react';
-import { useMutation, useApolloClient } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import {
   GoogleMap,
@@ -22,6 +22,7 @@ import {
 } from '@reach/combobox';
 import '@reach/combobox/styles.css';
 import UploadFile from '../components/UploadFile';
+import Navbar from '../components/Navbar';
 
 const CREATE_EVENT = gql`
   mutation createEvent(
@@ -78,24 +79,18 @@ const CreateEventPage = () => {
   //call createEvent function and pass in parameters when ready to submit event
   //function will return id when done, can add more if needed
 
+  const nonprofitId = parseInt(localStorage.getItem('nonprofitId'));
+
   const onSubmit = async () => {
-    console.log('PRESS BUTTON!');
-    console.log(title, date, location, file);
-    const eventCreateData = await createEvent({
+    createEvent({
       variables: {
         title,
         date,
         location,
-        nonprofitId: 60,
+        nonprofitId,
         file,
       },
     });
-
-    console.log(eventCreateData);
-
-    if (eventCreateData.data.createEvent.id) {
-      console.log('Created Event!');
-    }
   };
 
   const onMapClick = useCallback(e => {
@@ -126,6 +121,7 @@ const CreateEventPage = () => {
 
   return (
     <div>
+      <Navbar />
       <Search panTo={panTo} setMarker={setMarker} setLocation={setLocation} />
 
       <Combobox>

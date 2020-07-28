@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
-import { useQuery, useApolloClient } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import VolunteerGraphDisplay from '../components/VolunteerGraphDisplay';
 import { getVolunteer } from '../generated/getVolunteer';
@@ -15,20 +15,18 @@ const GET_VOLUNTEER = gql`
 `;
 
 const VolunteerDashboardPage = () => {
-  //access client cache which should have volunteerID if logged in
-  const client = useApolloClient();
-  const volunteer = client.readQuery({
-    query: gql`
-      query getVolunteer {
-        volunteerID
-      }
-    `,
-  });
-  const { loading, error, data } = useQuery<getVolunteer>(GET_VOLUNTEER, {
+  const volunteerId = parseInt(localStorage.getItem('volunteerId')!);
+
+  const { error, data } = useQuery<getVolunteer>(GET_VOLUNTEER, {
     variables: {
-      id: volunteer.volunteerID,
+      id: volunteerId,
     },
   });
+
+  if (error) {
+    console.log('hi', error);
+  }
+
   console.log(data);
   return (
     <div className="flex flex-col h-screen">
