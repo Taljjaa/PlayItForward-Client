@@ -1,12 +1,10 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
 import NonprofitGraphDisplay from '../components/NonprofitGraphDisplay';
-import CustomButton from '../components/CustomButton';
 import pifLogo from '../media/images/pif-logo.png';
-import { imageRoster } from '../media/images/imageRoster';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getNonprofit } from '../generated/getNonprofit';
 
 const GET_NONPROFIT = gql`
@@ -28,8 +26,6 @@ const GET_NONPROFIT = gql`
 `;
 
 const NonprofitDashboardPage = () => {
-  const history = useHistory();
-
   const nonprofitId = parseInt(localStorage.getItem('nonprofitId')!);
 
   const { loading, data } = useQuery<getNonprofit>(GET_NONPROFIT, {
@@ -66,13 +62,7 @@ const NonprofitDashboardPage = () => {
                 <img src={pifLogo} />
               </Link>
               {/* edit account button */}
-              <CustomButton
-                buttonImages={imageRoster.buttons.newEvent}
-                style="h-40 w-40"
-                eventHandler={() => {
-                  console.log('Yerp');
-                }}
-              />
+              <button>Insert Edit Account Button</button>
             </div>
           </div>
         </div>
