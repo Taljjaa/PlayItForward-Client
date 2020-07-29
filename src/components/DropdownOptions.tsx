@@ -9,6 +9,8 @@ const DropdownOptions = () => {
     history.push('/auth');
   };
 
+  const handleDashboard = () => {};
+
   return (
     <div className="absolute border-t border-blue-400 flex flex-col h-auto px-6 py-2 bg-gray-900 w-full">
       <button className="flex px-2 bg-gray-900 py-2 hover:bg-blue-700 rounded-lg">
@@ -20,7 +22,9 @@ const DropdownOptions = () => {
         </svg>
         <span className="ml-2 text-blue-400 font-semibold">Settings</span>
       </button>
-      <button className="flex px-2 bg-gray-900 py-2 hover:bg-blue-700 rounded-lg">
+      <button
+        onClick={handleDashboard}
+        className="flex px-2 bg-gray-900 py-2 hover:bg-blue-700 rounded-lg">
         <svg
           className="fill-current text-blue-500 h-6 w-6"
           xmlns="http://www.w3.org/2000/svg"
