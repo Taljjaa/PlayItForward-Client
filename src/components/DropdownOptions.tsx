@@ -9,7 +9,14 @@ const DropdownOptions = () => {
     history.push('/auth');
   };
 
-  const handleDashboard = () => {};
+  const handleDashboard = () => {
+    if (localStorage.getItem('type') === 'volunteer') {
+      history.push('/volunteer-dashboard');
+    }
+    if (localStorage.getItem('type') === 'nonprofit') {
+      history.push('/nonprofit-dashboard');
+    }
+  };
 
   return (
     <div className="absolute border-t border-blue-400 flex flex-col h-auto px-6 py-2 bg-gray-900 w-full">
