@@ -23,6 +23,7 @@ import {
 import '@reach/combobox/styles.css';
 import UploadFile from '../components/UploadFile';
 import Navbar from '../components/Navbar';
+import { useHistory } from 'react-router';
 
 const CREATE_EVENT = gql`
   mutation createEvent(
@@ -70,6 +71,8 @@ const CreateEventPage = () => {
   const [title, setTitle] = useState('');
   const [file, setFile] = useState(null);
 
+  const history = useHistory();
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
@@ -82,7 +85,7 @@ const CreateEventPage = () => {
   const nonprofitId = parseInt(localStorage.getItem('nonprofitId'));
 
   const onSubmit = async () => {
-    createEvent({
+    const newEvent = await createEvent({
       variables: {
         title,
         date,
@@ -91,6 +94,9 @@ const CreateEventPage = () => {
         file,
       },
     });
+    if (newEvent) {
+      history.push('/events');
+    }
   };
 
   const onMapClick = useCallback(e => {
