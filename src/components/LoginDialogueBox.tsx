@@ -71,6 +71,7 @@ const LoginDialogueBox = (props: DialogueProps) => {
           'volunteerId',
           volunteerData.data.loginVolunteer.volunteer.id,
         );
+        localStorage.setItem('type', 'volunteer');
         history.push('/volunteer-dashboard');
       }
     } else {
@@ -82,6 +83,7 @@ const LoginDialogueBox = (props: DialogueProps) => {
           'nonprofitId',
           nonprofitData.data.loginNonprofit.nonprofit.id,
         );
+        localStorage.setItem('type', 'nonprofit');
         history.push('/nonprofit-dashboard');
       }
     }

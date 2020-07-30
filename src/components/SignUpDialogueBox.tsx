@@ -115,6 +115,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
           'volunteerId',
           volunteerData.data.registerVolunteer.volunteer.id,
         );
+        localStorage.setItem('type', 'volunteer');
         history.push('/volunteer-dashboard');
       }
     } else {
@@ -142,6 +143,7 @@ const SignUpDialogueBox = (props: DialogueProps) => {
           'nonprofitId',
           nonprofitData.data.registerNonprofit.nonprofit.id,
         );
+        localStorage.setItem('type', 'nonprofit');
         history.push('/nonprofit-dashboard');
       }
     }
