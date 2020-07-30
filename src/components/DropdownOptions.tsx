@@ -10,10 +10,11 @@ const DropdownOptions = () => {
   };
 
   const handleDashboard = () => {
-    if (localStorage.getItem('type') === 'volunteer') {
+    const userType = localStorage.getItem('type');
+    if (userType === 'volunteer') {
       history.push('/volunteer-dashboard');
     }
-    if (localStorage.getItem('type') === 'nonprofit') {
+    if (userType === 'nonprofit') {
       history.push('/nonprofit-dashboard');
     }
   };
