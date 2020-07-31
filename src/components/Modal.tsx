@@ -3,10 +3,7 @@ import { createPortal } from 'react-dom';
 
 const modalRoot = document.getElementById('modal');
 
-const Modal = ({ children }: any) => {
-  const [isOpen, setOpen] = useState(false);
-  const [modalContent, setModalContent] = useState('');
-
+const Modal = ({ isModalOpen, modalContent }: any) => {
   const el = document.createElement('div');
 
   useEffect(() => {
@@ -17,8 +14,9 @@ const Modal = ({ children }: any) => {
     };
   }, [el]);
 
+  console.log(isModalOpen);
   return (
-    isOpen ??
+    isModalOpen ??
     createPortal(
       <div
         style={{
@@ -37,7 +35,7 @@ const Modal = ({ children }: any) => {
             padding: '50px',
             textAlign: 'center',
           }}>
-          {modalContent}
+          Hi
         </p>
       </div>,
       // target container
