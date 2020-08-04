@@ -16,6 +16,7 @@ interface Props {
     location: string,
     date: string,
     nonprofit: any,
+    id: number,
   ) => void;
   toggleModal: () => void;
 }
@@ -23,11 +24,11 @@ interface Props {
 const EventCard = ({ event, addModalContent, toggleModal }: Props) => {
   const updateModal = () => {
     //set the modal content and toggle the modal
-    addModalContent(title, location, date, nonprofit);
+    addModalContent(title, location, date, nonprofit, id);
     toggleModal();
   };
 
-  const { title, location, date, nonprofit, image } = event;
+  const { title, location, date, nonprofit, image, id } = event;
   return (
     <div onClick={updateModal} className="flex flex-row justify-end pb-2">
       {/* Event Logo */}

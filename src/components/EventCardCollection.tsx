@@ -49,8 +49,9 @@ const EventCardCollection = () => {
     location: string,
     date: string,
     nonprofit: any,
+    id: number,
   ) => {
-    setModalContent({ title, location, date, nonprofit });
+    setModalContent({ title, location, date, nonprofit, id });
   };
 
   const { loading, error, data } = useQuery<getEvents>(GET_EVENTS);
