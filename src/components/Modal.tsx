@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 
 const modalRoot = document.getElementById('modal');
 
-const Modal = ({ isModalOpen, modalContent }: any) => {
+const Modal = ({ isModalOpen, modalContent, closeModal }: any) => {
   const el = document.createElement('div');
   el.classList.add('sup');
 
@@ -31,6 +31,7 @@ const Modal = ({ isModalOpen, modalContent }: any) => {
           padding: '100px',
           backgroundColor: 'rgba(0,0,0,0.6)',
         }}>
+        <button onClick={closeModal}>X</button>
         <p
           style={{
             width: '50%',

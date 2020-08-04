@@ -40,6 +40,10 @@ const EventCardCollection = () => {
     setModalOpen(!isModalOpen);
   };
 
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   const addModalContent = (title: string) => {
     setModalContent(title);
   };
@@ -48,7 +52,11 @@ const EventCardCollection = () => {
   if (loading || !data) return null;
   return (
     <div>
-      <Modal isModalOpen={isModalOpen} modalContent={modalContent} />
+      <Modal
+        isModalOpen={isModalOpen}
+        modalContent={modalContent}
+        closeModal={closeModal}
+      />
       {!error ? (
         <div>
           <div>
