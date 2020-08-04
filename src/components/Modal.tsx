@@ -23,7 +23,6 @@ const Modal = ({ isModalOpen, modalContent, closeModal }: any) => {
   const [addVolunteer] = useMutation(ADD_VOLUNTEER);
 
   const handleAttendClick = async () => {
-    console.log('attending');
     const volunteerId = parseInt(localStorage.getItem('volunteerId')!);
     let mutationResult = await addVolunteer({
       variables: {
@@ -31,7 +30,10 @@ const Modal = ({ isModalOpen, modalContent, closeModal }: any) => {
         eventId,
       },
     });
-    console.log(mutationResult);
+    if (mutationResult.data.addVolunteer.ok) {
+      closeModal();
+      //add notfication of successful signup
+    }
   };
 
   const el = document.createElement('div');
