@@ -23,6 +23,7 @@ const GET_EVENTS = gql`
       date
       location
       nonprofit {
+        id
         displayName
       }
     }
@@ -33,10 +34,9 @@ const EventCardCollection = () => {
   //useQuery hook takes our gql query and makes a request to the backend
   //the return value is held in data
   const [isModalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState('');
+  const [modalContent, setModalContent] = useState({});
 
   const toggleModal = () => {
-    console.log('toggling modal');
     setModalOpen(!isModalOpen);
   };
 
@@ -44,8 +44,13 @@ const EventCardCollection = () => {
     setModalOpen(false);
   };
 
-  const addModalContent = (title: string) => {
-    setModalContent(title);
+  const addModalContent = (
+    title: string,
+    location: string,
+    date: string,
+    nonprofit: any,
+  ) => {
+    setModalContent({ title, location, date, nonprofit });
   };
 
   const { loading, error, data } = useQuery<getEvents>(GET_EVENTS);

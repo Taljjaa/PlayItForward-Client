@@ -4,8 +4,9 @@ import { createPortal } from 'react-dom';
 const modalRoot = document.getElementById('modal');
 
 const Modal = ({ isModalOpen, modalContent, closeModal }: any) => {
+  const { title, location, date, nonprofit } = modalContent;
+
   const el = document.createElement('div');
-  el.classList.add('sup');
 
   useEffect(() => {
     modalRoot?.appendChild(el);
@@ -15,12 +16,10 @@ const Modal = ({ isModalOpen, modalContent, closeModal }: any) => {
     };
   }, [el]);
 
-  console.log(isModalOpen);
   return (
     isModalOpen &&
     createPortal(
       <div
-        id="findMe"
         style={{
           zIndex: 99,
           position: 'absolute',
@@ -31,16 +30,26 @@ const Modal = ({ isModalOpen, modalContent, closeModal }: any) => {
           padding: '100px',
           backgroundColor: 'rgba(0,0,0,0.6)',
         }}>
-        <button onClick={closeModal}>X</button>
-        <p
+        <div
           style={{
             width: '50%',
             background: 'white',
             padding: '50px',
             textAlign: 'center',
+            margin: '0 auto',
+            position: 'relative',
           }}>
-          {modalContent}
-        </p>
+          <button
+            onClick={closeModal}
+            style={{ position: 'absolute', top: 5, right: 10 }}>
+            X
+          </button>
+          <p>
+            {title} by {nonprofit['displayName']}
+          </p>
+          <p>{date}</p>
+          <p>{location}</p>
+        </div>
       </div>,
       // target container
       el,

@@ -18,14 +18,14 @@ export interface getNonprofit_getNonprofit_events {
   title: string;
   location: string;
   date: string;
-  volunteers: getNonprofit_getNonprofit_events_volunteers[] | null;
+  volunteers: getNonprofit_getNonprofit_events_volunteers[];
 }
 
 export interface getNonprofit_getNonprofit {
   __typename: 'Nonprofit';
   displayName: string;
   logo: string;
-  events: getNonprofit_getNonprofit_events[] | null;
+  events: getNonprofit_getNonprofit_events[];
 }
 
 export interface getNonprofit {

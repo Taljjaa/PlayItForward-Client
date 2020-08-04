@@ -11,14 +11,19 @@ import { getEvents_getEvents } from '../generated/getEvents';
 
 interface Props {
   event: getEvents_getEvents;
-  addModalContent: (title: string) => void;
+  addModalContent: (
+    title: string,
+    location: string,
+    date: string,
+    nonprofit: any,
+  ) => void;
   toggleModal: () => void;
 }
 
 const EventCard = ({ event, addModalContent, toggleModal }: Props) => {
   const updateModal = () => {
     //set the modal content and toggle the modal
-    addModalContent(title);
+    addModalContent(title, location, date, nonprofit);
     toggleModal();
   };
 
