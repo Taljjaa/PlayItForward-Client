@@ -40,6 +40,10 @@ const EventCardCollection = () => {
     setModalOpen(!isModalOpen);
   };
 
+  const addModalContent = (title: string) => {
+    setModalContent(title);
+  };
+
   const { loading, error, data } = useQuery<getEvents>(GET_EVENTS);
   if (loading || !data) return null;
   return (
@@ -54,7 +58,7 @@ const EventCardCollection = () => {
                 <EventCard
                   event={event}
                   key={event.id}
-                  setModalContent={setModalContent}
+                  addModalContent={addModalContent}
                   toggleModal={toggleModal}
                 />
               );

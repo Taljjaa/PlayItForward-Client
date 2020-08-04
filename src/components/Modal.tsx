@@ -38,7 +38,7 @@ const Modal = ({ isModalOpen, modalContent }: any) => {
             padding: '50px',
             textAlign: 'center',
           }}>
-          Hi
+          {modalContent}
         </p>
       </div>,
       // target container

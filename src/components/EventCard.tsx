@@ -11,14 +11,20 @@ import { getEvents_getEvents } from '../generated/getEvents';
 
 interface Props {
   event: getEvents_getEvents;
-  setModalContent: React.Dispatch<React.SetStateAction<string>>;
+  addModalContent: (title: string) => void;
   toggleModal: () => void;
 }
 
-const EventCard = ({ event, setModalContent, toggleModal }: Props) => {
+const EventCard = ({ event, addModalContent, toggleModal }: Props) => {
+  const updateModal = () => {
+    //set the modal content and toggle the modal
+    addModalContent(title);
+    toggleModal();
+  };
+
   const { title, location, date, nonprofit, image } = event;
   return (
-    <div onClick={toggleModal} className="flex flex-row justify-end pb-2">
+    <div onClick={updateModal} className="flex flex-row justify-end pb-2">
       {/* Event Logo */}
       <div className="flex justify-center items-center bg-white h-24 w-24">
         <img src={image} alt="event" />
