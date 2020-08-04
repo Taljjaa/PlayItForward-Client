@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 const modalRoot = document.getElementById('modal');
 
 const Modal = ({ isModalOpen, modalContent }: any) => {
   const el = document.createElement('div');
+  el.classList.add('sup');
 
   useEffect(() => {
     modalRoot?.appendChild(el);
@@ -16,10 +17,12 @@ const Modal = ({ isModalOpen, modalContent }: any) => {
 
   console.log(isModalOpen);
   return (
-    isModalOpen ??
+    isModalOpen &&
     createPortal(
       <div
+        id="findMe"
         style={{
+          zIndex: 99,
           position: 'absolute',
           top: 0,
           left: 0,
