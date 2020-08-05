@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 const modalRoot = document.getElementById('modal');
+const el = document.createElement('div');
 
 const ADD_VOLUNTEER = gql`
   mutation addVolunteer($volunteerId: Int!, $eventId: Int!) {
@@ -36,13 +37,11 @@ const Modal = ({ isModalOpen, modalContent, closeModal }: any) => {
     }
   };
 
-  const el = document.createElement('div');
-
   useEffect(() => {
-    modalRoot?.appendChild(el);
+    modalRoot!.appendChild(el);
 
     return () => {
-      modalRoot?.removeChild(el);
+      modalRoot!.removeChild(el);
     };
   }, [el]);
 
