@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-const modalRoot = document.getElementById('modal');
+const modalRoot = document.getElementById('modal')!;
 const el = document.createElement('div');
 
 const ADD_VOLUNTEER = gql`
@@ -38,10 +38,10 @@ const Modal = ({ isModalOpen, modalContent, closeModal }: any) => {
   };
 
   useEffect(() => {
-    modalRoot!.appendChild(el);
+    modalRoot.appendChild(el);
 
     return () => {
-      modalRoot!.removeChild(el);
+      modalRoot.removeChild(el);
     };
   }, [el]);
 

@@ -11,24 +11,16 @@ import { getEvents_getEvents } from '../generated/getEvents';
 
 interface Props {
   event: getEvents_getEvents;
-  addModalContent: (
-    title: string,
-    location: string,
-    date: string,
-    nonprofit: any,
-    id: number,
-  ) => void;
-  toggleModal: () => void;
+  addModalContent: (id: number) => void;
 }
 
-const EventCard = ({ event, addModalContent, toggleModal }: Props) => {
+const EventCard = ({ event, addModalContent }: Props) => {
+  const { title, location, date, nonprofit, image, id } = event;
+
   const updateModal = () => {
-    //set the modal content and toggle the modal
-    addModalContent(title, location, date, nonprofit, id);
-    toggleModal();
+    addModalContent(id);
   };
 
-  const { title, location, date, nonprofit, image, id } = event;
   return (
     <div onClick={updateModal} className="flex flex-row justify-end pb-2">
       {/* Event Logo */}

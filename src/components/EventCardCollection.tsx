@@ -36,6 +36,10 @@ const EventCardCollection = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({});
 
+  const { loading, error, data } = useQuery<getEvents>(GET_EVENTS);
+
+  if (loading || !data) return null;
+
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
@@ -44,18 +48,12 @@ const EventCardCollection = () => {
     setModalOpen(false);
   };
 
-  const addModalContent = (
-    title: string,
-    location: string,
-    date: string,
-    nonprofit: any,
-    id: number,
-  ) => {
-    setModalContent({ title, location, date, nonprofit, id });
+  const addModalContent = (id: number) => {
+    const selectedEventData = data.getEvents.filter(event => event.id === id);
+    setModalContent(selectedEventData[0]);
+    toggleModal();
   };
 
-  const { loading, error, data } = useQuery<getEvents>(GET_EVENTS);
-  if (loading || !data) return null;
   return (
     <div>
       <Modal
@@ -73,7 +71,6 @@ const EventCardCollection = () => {
                   event={event}
                   key={event.id}
                   addModalContent={addModalContent}
-                  toggleModal={toggleModal}
                 />
               );
             })}
