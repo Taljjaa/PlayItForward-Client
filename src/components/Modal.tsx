@@ -1,42 +1,10 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
 
 const modalRoot = document.getElementById('modal')!;
 const el = document.createElement('div');
 
-const ADD_VOLUNTEER = gql`
-  mutation addVolunteer($volunteerId: Int!, $eventId: Int!) {
-    addVolunteer(volunteerId: $volunteerId, eventId: $eventId) {
-      ok
-      errors {
-        path
-        message
-      }
-    }
-  }
-`;
-
-const Modal = ({ isModalOpen, modalContent, closeModal }: any) => {
-  const { title, location, date, nonprofit, id: eventId } = modalContent;
-
-  const [addVolunteer] = useMutation(ADD_VOLUNTEER);
-
-  const handleAttendClick = async () => {
-    const volunteerId = parseInt(localStorage.getItem('volunteerId')!);
-    let mutationResult = await addVolunteer({
-      variables: {
-        volunteerId,
-        eventId,
-      },
-    });
-    if (mutationResult.data.addVolunteer.ok) {
-      closeModal();
-      //add notfication of successful signup
-    }
-  };
-
+const Modal = ({ isModalOpen, children, closeModal }: any) => {
   useEffect(() => {
     modalRoot.appendChild(el);
 
@@ -73,24 +41,7 @@ const Modal = ({ isModalOpen, modalContent, closeModal }: any) => {
             style={{ position: 'absolute', top: 5, left: 10 }}>
             X
           </button>
-          <p>
-            {title} by {nonprofit['displayName']}
-          </p>
-          <p>{date}</p>
-          <p>{location}</p>
-          <button
-            onClick={handleAttendClick}
-            style={{
-              position: 'absolute',
-              bottom: 5,
-              right: 10,
-              color: 'white',
-              background: '#2a4365',
-              padding: '5px',
-              borderRadius: '15px',
-            }}>
-            Attend
-          </button>
+          {children}
         </div>
       </div>,
       // target container

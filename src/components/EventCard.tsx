@@ -9,17 +9,19 @@ import { getEvents_getEvents } from '../generated/getEvents';
 interface Props {
   event: getEvents_getEvents;
   addModalContent: (id: number) => void;
+  toggleModal: () => void;
 }
 
-const EventCard = ({ event, addModalContent }: Props) => {
+const EventCard = ({ event, addModalContent, toggleModal }: Props) => {
   const { title, location, date, nonprofit, image, id } = event;
 
-  const updateModal = () => {
+  const handleModal = () => {
     addModalContent(id);
+    toggleModal();
   };
 
   return (
-    <div onClick={updateModal} className="flex flex-row justify-end pb-2">
+    <div onClick={handleModal} className="flex flex-row justify-end pb-2">
       {/* Event Logo */}
       <div className="flex justify-center items-center bg-white h-24 w-24">
         <img src={image} alt="event" />
