@@ -1,0 +1,26 @@
+.flexBoxContainer {
+  display: flex;
+  margin: 10px;
+
+  .imageFlexBox {
+    display: flex;
+    height: 6rem;
+    width: 6rem;
+    background-color: white;
+
+    img {
+      object-fit: cover;
+    }
+  }
+  .eventCardInfo {
+    background-color: #63b3ed;
+    height: 6rem;
+    padding-left: 0.25rem;
+    width: 16rem;
+    overflow: hidden;
+
+    .eventTitle {
+      font-weight: 600;
+    }
+  }
+}
