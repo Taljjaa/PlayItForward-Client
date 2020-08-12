@@ -5,26 +5,29 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import EventCardCollection from '../components/EventCardCollection';
 import trophyGif from '../media/animations/trophy-rotate.gif';
-
+import './LandingPage.scss';
 // This functional component renders the landing page
 // Layout (from top --> bottom):
 // Navbar, Logo, Upcoming Events
 const LandingPage = () => {
   return (
-    <div className="landing-page flex flex-col h-full w-screen">
+    <div className="columnFlexBox">
       {/* Navbar */}
       <Navbar />
 
       {/* Logo */}
-      <div className="landing-pg-logo flex items-center justify-center h-64 mb-4">
-        <img className="h-64" src={trophyGif} alt="" />
+      <div className="trophyLogo">
+        <img
+          src={trophyGif}
+          alt="gif of trophy spinning with the play it forward logo"
+        />
       </div>
 
-      <h1 className="font-bold text-4xl text-center pb-4">MAKE A DIFFERENCE</h1>
+      <h1 className="motto">MAKE A DIFFERENCE</h1>
 
       {/* Upcoming Events */}
-      <div className="landing-pg-upcoming-events flex flex-col items-center w-screen flex-grow">
-        <h1 className="font-bold text-xl pb-1">UPCOMING EVENTS</h1>
+      <div className="landingPageEventCollection">
+        <h2>UPCOMING EVENTS</h2>
         <EventCardCollection />
       </div>
     </div>
