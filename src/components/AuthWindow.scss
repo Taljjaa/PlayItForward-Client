@@ -1,0 +1,23 @@
+.authContainerWindow {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+
+  .authWindowTabs {
+    display: flex;
+
+    .authWindowButtons {
+      color: white;
+      width: 50%;
+      height: 3rem;
+    }
+
+    .authWindowButtonSelected {
+      background-color: #4299e1;
+    }
+
+    .authWindowButtonUnselected {
+      background-color: #3182ce;
+    }
+  }
+}
