@@ -124,7 +124,7 @@ const LoginDialogueBox = (props: DialogueProps) => {
               type="radio"
               name="accountType"
               checked={props.isVolunteer}
-              onClick={() => props.setIsVolunteer(true)}
+              onChange={() => props.setIsVolunteer(true)}
             />
           </label>
         </div>
@@ -136,7 +136,7 @@ const LoginDialogueBox = (props: DialogueProps) => {
               type="radio"
               name="accountType"
               checked={!props.isVolunteer}
-              onClick={() => props.setIsVolunteer(false)}
+              onChange={() => props.setIsVolunteer(false)}
             />
           </label>
         </div>
