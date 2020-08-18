@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { useForm } from 'react-hook-form';
 import UploadFile from './UploadFile';
+import './AuthDialogueBox.scss';
 
 // Type definitions
 type DialogueProps = {
@@ -150,21 +151,17 @@ const SignUpDialogueBox = (props: DialogueProps) => {
   };
 
   return (
-    <form
-      className="bg-blue-500 flex flex-col h-full px-4 pt-4"
-      onSubmit={handleSubmit(onSubmit)}>
+    <form className="formContainer" onSubmit={handleSubmit(onSubmit)}>
       {/* Header */}
-      <p className="text-center text-white font-semibold text-xl pb-4">
-        Sign Up!
-      </p>
+      <p className="headerText">Sign Up!</p>
       {/* Text Fields */}
       <input
         name="username"
         ref={register({ required: true })}
         placeholder="Enter Username"
-        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        className="formInputs"
       />
-      {username && <span className="text-white">Username is required</span>}
+      {username && <span className="errorText">Username is required</span>}
       <input
         name="password"
         type="password"
@@ -173,10 +170,10 @@ const SignUpDialogueBox = (props: DialogueProps) => {
           validate: value => value === watch('confirmPassword'),
         })}
         placeholder="Enter Password"
-        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        className="formInputs"
       />
       {password && (
-        <span className="text-white">Password is blank or doesn't match</span>
+        <span className="errorText">Password is blank or doesn't match</span>
       )}
       <input
         name="confirmPassword"
@@ -186,10 +183,10 @@ const SignUpDialogueBox = (props: DialogueProps) => {
           validate: value => value === watch('password'),
         })}
         placeholder="Re-type Password"
-        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        className="formInputs"
       />
       {confirmPassword && (
-        <span className="text-white">Password is blank or doesn't match</span>
+        <span className="errorText">Password is blank or doesn't match</span>
       )}
       {!props.isVolunteer ? (
         <>
@@ -197,19 +194,19 @@ const SignUpDialogueBox = (props: DialogueProps) => {
             name="mission"
             ref={register({ required: true })}
             placeholder="Enter Mission Statement"
-            className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+            className="formInputs"
           />
           {mission && (
-            <span className="text-white">Mission statement is required</span>
+            <span className="errorText">Mission statement is required</span>
           )}
           <input
             name="description"
             ref={register({ required: true })}
             placeholder="Enter Organization Description"
-            className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+            className="formInputs"
           />
           {description && (
-            <span className="text-white">
+            <span className="errorText">
               Organization description is required
             </span>
           )}
@@ -217,10 +214,10 @@ const SignUpDialogueBox = (props: DialogueProps) => {
             name="displayName"
             ref={register({ required: true })}
             placeholder="Enter Organization Display Name"
-            className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+            className="formInputs"
           />
           {displayName && (
-            <span className="text-white">
+            <span className="errorText">
               Organization display name is required
             </span>
           )}
@@ -228,45 +225,44 @@ const SignUpDialogueBox = (props: DialogueProps) => {
             name="contact"
             ref={register({ required: true })}
             placeholder="Enter Organization Contact"
-            className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+            className="formInputs"
           />
           {contact && (
-            <span className="text-white">Organization contact is required</span>
+            <span className="errorText">Organization contact is required</span>
           )}
         </>
       ) : null}
 
       {/* Radio Selection */}
       <UploadFile onIconChange={onIconChange} />
-      <div className="flex justify-around text-white">
-        <label className="inline-flex items-center">
-          <input
-            type="radio"
-            className="form-radio"
-            name="accountType"
-            checked={props.isVolunteer}
-            onClick={() => props.setIsVolunteer(true)}
-          />
-          <span className="ml-2">Volunteer</span>
-        </label>
-        <label className="inline-flex items-center">
-          <input
-            type="radio"
-            className="form-radio"
-            name="accountType"
-            checked={!props.isVolunteer}
-            onClick={() => props.setIsVolunteer(false)}
-          />
-          <span className="ml-2">Nonprofit</span>
-        </label>
+      <div className="radioButtonContainer">
+        <div>
+          <label>
+            Volunteer
+            <input
+              type="radio"
+              className="accountTypeRadioButton"
+              name="accountType"
+              checked={props.isVolunteer}
+              onChange={() => props.setIsVolunteer(true)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Nonprofit
+            <input
+              type="radio"
+              className="accountTypeRadioButton"
+              name="accountType"
+              checked={!props.isVolunteer}
+              onChange={() => props.setIsVolunteer(false)}
+            />
+          </label>
+        </div>
       </div>
-
       {/* Submit */}
-      <div className="flex justify-center">
-        <button className="bg-blue-600 w-24 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-4 mb-2">
-          Register
-        </button>
-      </div>
+      <button className="submitButton">Register</button>
     </form>
   );
 };

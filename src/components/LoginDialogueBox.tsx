@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { useForm } from 'react-hook-form';
-import './LoginDialogueBox.scss';
+import './AuthDialogueBox.scss';
 
 // Type definitions
 type DialogueProps = {
@@ -142,9 +142,7 @@ const LoginDialogueBox = (props: DialogueProps) => {
         </div>
       </div>
       {/* Submit Button */}
-      <div>
-        <button className="loginButton">Login</button>
-      </div>
+      <button className="submitButton">Login</button>
     </form>
   );
 };
