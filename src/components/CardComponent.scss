@@ -1,3 +1,5 @@
+@import '../variables';
+
 .flexBoxContainer {
   display: flex;
   margin: 10px;
@@ -13,7 +15,7 @@
     }
   }
   .cardInfo {
-    background-color: #63b3ed;
+    background-color: $light-blue;
     height: 6rem;
     padding-left: 0.25rem;
     width: 16rem;

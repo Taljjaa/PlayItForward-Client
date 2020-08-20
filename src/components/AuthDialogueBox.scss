@@ -1,3 +1,5 @@
+@import '../variables';
+
 .formContainer {
   background-color: #4299e1;
   display: flex;
@@ -54,7 +56,7 @@
   }
 
   .submitButton:hover {
-    background-color: #63b3ed;
+    background-color: $light-blue;
     border-color: #4299e1;
   }
 }
