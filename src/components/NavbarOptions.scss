@@ -1,0 +1,16 @@
+.navBarOptionsContainer {
+  display: flex;
+  color: #63b3ed;
+  justify-content: space-around;
+
+  .navBarOption {
+    font-weight: 600;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .navBarOption:hover {
+    background-color: #2b6cb0;
+    border-radius: 0.25rem;
+  }
+}
