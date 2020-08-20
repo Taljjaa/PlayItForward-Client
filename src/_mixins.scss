@@ -1,0 +1,10 @@
+@mixin navBarOption {
+  font-weight: 600;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@mixin navBarOptionHover {
+  background-color: #2b6cb0;
+  border-radius: 0.25rem;
+}
