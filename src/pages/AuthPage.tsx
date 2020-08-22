@@ -1,22 +1,23 @@
 import React from 'react';
 
-import Navbar from '../components/Navbar'
-import AuthWindow from '../components/AuthWindow'
+import Navbar from '../components/Navbar';
+import AuthWindow from '../components/AuthWindow';
+import './AuthPage.scss';
 
 // Layout
 // Navbar, AuthWindow
 const AuthPage = () => {
-    return (
-        <div className="auth-page w-screen h-screen">
-            {/* Navbar */}
-            <Navbar />
+  return (
+    <div className="authPageBody">
+      {/* Navbar */}
+      <Navbar />
 
-            <div className="auth-page-body flex h-full justify-center items-center">
-                {/* AuthWindow */}
-                <AuthWindow />
-            </div>
-        </div>
-    );
+      <div className="authWindowContainer">
+        {/* AuthWindow */}
+        <AuthWindow />
+      </div>
+    </div>
+  );
 };
 
 export default AuthPage;
