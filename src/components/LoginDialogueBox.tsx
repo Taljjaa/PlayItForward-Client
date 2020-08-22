@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { useForm } from 'react-hook-form';
+import './AuthDialogueBox.scss';
 
 // Type definitions
 type DialogueProps = {
@@ -90,62 +91,58 @@ const LoginDialogueBox = (props: DialogueProps) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="bg-blue-500 flex flex-col h-full w-full px-4 pt-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="formContainer">
       {/* Header */}
-      <p className="text-center text-white font-semibold text-xl pb-4">
-        Welcome Back!
-      </p>
+      <p className="headerText">Welcome Back!</p>
       {/* Text Fields */}
       <input
         name="username"
         ref={register({ required: true })}
         placeholder="Enter Username"
-        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        className="formInputs"
       />
       {errors.username && (
-        <span className="text-white">Username is required</span>
+        <span className="errorText">Username is required</span>
       )}
       <input
         name="password"
         type="password"
         ref={register({ required: true })}
         placeholder="Enter Password"
-        className="text-center text-white bg-blue-800 focus:outline-none focus:shadow-outline border border-blue-500 mb-2"
+        className="formInputs"
       />
       {errors.password && (
-        <span className="text-white">Password is required</span>
+        <span className="errorText">Password is required</span>
       )}
       {/* Radio Selection */}
-      <div className="flex justify-around text-white">
-        <label className="inline-flex items-center">
-          <input
-            type="radio"
-            className="form-radio"
-            name="accountType"
-            checked={props.isVolunteer}
-            onClick={() => props.setIsVolunteer(true)}
-          />
-          <span className="ml-2">Volunteer</span>
-        </label>
-        <label className="inline-flex items-center">
-          <input
-            type="radio"
-            className="form-radio"
-            name="accountType"
-            checked={!props.isVolunteer}
-            onClick={() => props.setIsVolunteer(false)}
-          />
-          <span className="ml-2">Nonprofit</span>
-        </label>
+      <div className="radioButtonContainer">
+        <div>
+          <label>
+            Volunteer
+            <input
+              className="accountTypeRadioButton"
+              type="radio"
+              name="accountType"
+              checked={props.isVolunteer}
+              onChange={() => props.setIsVolunteer(true)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Nonprofit
+            <input
+              className="accountTypeRadioButton"
+              type="radio"
+              name="accountType"
+              checked={!props.isVolunteer}
+              onChange={() => props.setIsVolunteer(false)}
+            />
+          </label>
+        </div>
       </div>
       {/* Submit Button */}
-      <div className="flex justify-center">
-        <button className="bg-blue-600 w-24 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-4 mb-2">
-          Login
-        </button>
-      </div>
+      <button className="submitButton">Login</button>
     </form>
   );
 };

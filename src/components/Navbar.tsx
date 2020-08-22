@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import NavbarOptions from './NavbarOptions';
 import DropdownOptions from './DropdownOptions';
+import './NavBar.scss';
 
 // Header Links, Collapsible Menu Options
 const Navbar = () => {
@@ -26,7 +27,7 @@ const Navbar = () => {
   // SVG Icon for collapsing menu
   const hamburgerCollapseIcon = (
     <svg
-      className="h-6 w-6 fill-current text-red-500"
+      className="hamburgerCollapseIcon"
       onClick={onHamburgerClick}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20">
@@ -37,7 +38,7 @@ const Navbar = () => {
   // SVG Icon for expanding menu
   const hamburgerExpandIcon = (
     <svg
-      className="h-6 w-6 fill-current text-white"
+      className="hamburgerExpandIcon"
       onClick={onHamburgerClick}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20">
@@ -46,11 +47,11 @@ const Navbar = () => {
   );
 
   return (
-    <header className="relative bg-gray-900">
+    <header className="navBarHeader">
       {/* Header Links */}
-      <div className="flex items-center px-6 py-2">
+      <div className="navBarOptions">
         <NavbarOptions />
-        <div className="flex justify-end w-full">
+        <div className="flexibleHamburgerOption">
           {loggedIn ? (
             expanded ? (
               hamburgerCollapseIcon
@@ -58,9 +59,7 @@ const Navbar = () => {
               hamburgerExpandIcon
             )
           ) : (
-            <a
-              className="font-semibold rounded px-2 hover:bg-blue-700 text-blue-400 underline"
-              href="/auth">
+            <a className="loginOption" href="/auth">
               Login
             </a>
           )}

@@ -1,0 +1,16 @@
+@import '../mixins';
+@import '../variables';
+
+.navBarOptionsContainer {
+  display: flex;
+  color: $light-blue;
+  justify-content: space-around;
+
+  .navBarOption {
+    @include navBarOption;
+  }
+
+  .navBarOption:hover {
+    @include navBarOptionHover;
+  }
+}

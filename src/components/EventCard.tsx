@@ -1,7 +1,7 @@
 import React from 'react';
 // Custom Imports types, generated from graphql schema
 import { getEvents_getEvents } from '../generated/getEvents';
-import './EventCard.scss';
+import './CardComponent.scss';
 
 // This is a re-usable Card component for event info
 // Layout:
@@ -28,9 +28,9 @@ const EventCard = ({ event, addModalContent, toggleModal }: Props) => {
         <img src={image} alt="event" />
       </div>
       {/* Event Information */}
-      <div className="eventCardInfo">
+      <div className="cardInfo">
         <h1>{nonprofit['displayName']}</h1>
-        <h1 className="eventTitle">{title}</h1>
+        <h1 className="title">{title}</h1>
         <h1>{date}</h1>
         <h1>{location}</h1>
       </div>

@@ -1,0 +1,42 @@
+@import '../mixins';
+@import '../variables';
+
+.navBarHeader {
+  position: relative;
+  background-color: #1a202c;
+
+  .navBarOptions {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+
+    .flexibleHamburgerOption {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+
+      .loginOption {
+        @include navBarOption;
+        color: $light-blue;
+      }
+
+      .loginOption:hover {
+        @include navBarOptionHover;
+      }
+    }
+  }
+}
+
+.hamburgerCollapseIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: currentColor;
+  color: #f56565;
+}
+
+.hamburgerExpandIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: currentColor;
+  color: white;
+}

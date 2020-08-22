@@ -1,0 +1,13 @@
+.authPageBody {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+
+  .authWindowContainer {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,34 +1,38 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import LoginDialogueBox from "./LoginDialogueBox";
-import SignUpDialogueBox from "./SignUpDialogueBox";
+import LoginDialogueBox from './LoginDialogueBox';
+import SignUpDialogueBox from './SignUpDialogueBox';
+import './AuthWindow.scss';
 
 // ClickableTabs (x2), LoginBody || SignUpBody
 const AuthWindow = () => {
   const [loginTabbed, setLoginTabbed] = useState(true);
   const [isVolunteer, setIsVolunteer] = useState(true);
 
-  const tabHeaderClass =
-    "flex text-white justify-center items-center w-6/12 h-12 ";
-  const selected = "bg-blue-500";
-  const unSelected = "bg-blue-600";
-
   return (
-    <div className="auth-page-window flex flex-col w-80 lg:w-120">
+    <div className="authContainerWindow">
       {/* Clickable Tabs */}
-      <div className="flex w-full">
-        <div
-          className={tabHeaderClass + (loginTabbed ? selected : unSelected)}
-          onClick={() => setLoginTabbed(true)}
-        >
+      <div className="authWindowTabs">
+        <button
+          className={
+            'authWindowButtons ' +
+            (loginTabbed
+              ? 'authWindowButtonSelected'
+              : 'authWindowButtonUnselected')
+          }
+          onClick={() => setLoginTabbed(true)}>
           Login
-        </div>
-        <div
-          className={tabHeaderClass + (loginTabbed ? unSelected : selected)}
-          onClick={() => setLoginTabbed(false)}
-        >
+        </button>
+        <button
+          className={
+            'authWindowButtons ' +
+            (loginTabbed
+              ? 'authWindowButtonUnselected'
+              : 'authWindowButtonSelected')
+          }
+          onClick={() => setLoginTabbed(false)}>
           Signup
-        </div>
+        </button>
       </div>
 
       {/* LoginBody || SignUpBody */}

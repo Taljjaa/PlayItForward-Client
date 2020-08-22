@@ -1,0 +1,12 @@
+@import '../variables';
+
+@mixin navBarOption {
+  font-weight: 600;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@mixin navBarOptionHover {
+  background-color: $hover-blue;
+  border-radius: 0.25rem;
+}

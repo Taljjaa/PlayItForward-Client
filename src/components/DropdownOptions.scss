@@ -1,0 +1,38 @@
+@import '../variables';
+
+.dropdownContainer {
+  position: absolute;
+  border-top: 1px solid $light-blue;
+  display: flex;
+  flex-direction: column;
+  background-color: #1a202c;
+  height: auto;
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  .dropdownButton {
+    display: flex;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+
+    .dropdownIcon {
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: currentColor;
+      color: $light-blue;
+    }
+
+    .dropdownText {
+      color: $light-blue;
+      margin-left: 0.5rem;
+      font-weight: 600;
+    }
+  }
+
+  .dropdownButton:hover {
+    background-color: $hover-blue;
+  }
+}
