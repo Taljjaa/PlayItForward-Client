@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import EventSearchFilter from '../components/EventSearchFilter';
 import EventCardCollection from '../components/EventCardCollection';
+import './EventListPage.scss';
 
 // This is a functional component that displays the event list page
 // Layout:
@@ -19,7 +20,7 @@ const EventListPage = () => {
   });
 
   return (
-    <div className="flex flex-col w-screen h-screen">
+    <div className="flexColContainer">
       {/* Navbar */}
       <Navbar />
 
@@ -27,10 +28,8 @@ const EventListPage = () => {
       <EventSearchFilter />
 
       {/* Event List */}
-      <div className="event-list-pg flex flex-col items-center w-screen h-full">
-        <h1 className="event-list-pg-header font-bold text-xl">
-          EVENTS LISTED
-        </h1>
+      <div className="eventListContainer">
+        <h1 className="headerText">EVENTS LISTED</h1>
         <EventCardCollection />
       </div>
     </div>
