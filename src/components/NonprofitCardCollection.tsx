@@ -3,6 +3,7 @@ import React from 'react';
 
 // Custom imports
 import NonprofitCard from './NonprofitCard';
+import './NonprofitCardCollection.scss';
 
 // This functional component holds a collection of nonprofit cards
 // Layout:
@@ -27,10 +28,10 @@ const GET_ALL_NONPROFITS = gql`
 `;
 
 const NonprofitCardCollection = () => {
-  const { loading, error, data } = useQuery<getNonprofits>(GET_ALL_NONPROFITS);
+  const { loading, data } = useQuery<getNonprofits>(GET_ALL_NONPROFITS);
   if (loading || !data) return null;
   return (
-    <div className="flex flex-col flex-grow items-center w-full overflow-auto">
+    <div className="nonprofitCardContainer">
       {data.getNonprofits.map(nonprofit => {
         return <NonprofitCard key={nonprofit.id} nonprofit={nonprofit} />;
       })}
