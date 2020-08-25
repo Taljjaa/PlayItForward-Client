@@ -1,6 +1,5 @@
 import React from 'react';
 import NavBar from '../components/Navbar';
-import NonprofitGraphDisplay from '../components/NonprofitGraphDisplay';
 import pifLogo from '../media/images/pif-logo.png';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
@@ -66,7 +65,6 @@ const NonprofitDashboardPage = () => {
             </div>
           </div>
         </div>
-        <NonprofitGraphDisplay />
       </div>
     </div>
   );

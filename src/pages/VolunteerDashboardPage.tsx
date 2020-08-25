@@ -2,7 +2,6 @@ import React from 'react';
 import NavBar from '../components/Navbar';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import VolunteerGraphDisplay from '../components/VolunteerGraphDisplay';
 import { getVolunteer } from '../generated/getVolunteer';
 
 //graphql query object returns logged in volunteer based on localStorage
@@ -44,7 +43,6 @@ const VolunteerDashboardPage = () => {
             </div>
           </div>
         </div>
-        <VolunteerGraphDisplay />
       </div>
     </div>
   );
