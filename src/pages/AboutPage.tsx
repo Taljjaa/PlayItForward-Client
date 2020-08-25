@@ -6,18 +6,19 @@ import Navbar from '../components/Navbar';
 import newsImage from '../media/animations/news-bird.gif';
 import contributeImage from '../media/animations/contribute-piggy.gif';
 import GifButton from '../components/GifButton';
+import './AboutPage.scss';
 
 // Function component that displays general info about the program
 // Layout:
 // Navbar, Text Blurb, GifButtons!
 const AboutPage = () => {
   return (
-    <div className="flex flex-col w-screen h-screen overflow-scroll">
+    <div>
       {/* Navbar */}
       <Navbar />
 
       {/* Text Blurb */}
-      <div className="flex flex-col items-center">
+      <div>
         <h1 className="text-center font-bold text-4xl pt-4">
           ABOUT PLAY IT FORWARD
         </h1>
