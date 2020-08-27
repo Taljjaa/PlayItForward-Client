@@ -1,5 +1,6 @@
 // React imports
 import React, { useState } from 'react';
+import './EventSearchFilter.scss';
 
 // Form ( Input Row 1, Input Row 2, Submit )
 const EventSearchFilter = () => {
@@ -9,15 +10,15 @@ const EventSearchFilter = () => {
   const [eventEndDate, setEventEndDate] = useState('');
 
   return (
-    <div className="self-center bg-blue-300 rounded-lg mx-2 my-2 px-4 pb-2 shadow-lg w-104">
+    <div className="searchFilterContainer">
       {/* Form Start */}
       <form>
         {/* Input Row 1 */}
-        <div className="flex flex-row justify-between pb-1">
+        <div className="inputRow">
           <div>
-            <label className="block text-blue-800 pl-1">Event Name</label>
+            <label className="inputLabel">Event Name</label>
             <input
-              className="bg-gray-200 appearance-none rounded pl-1"
+              className="inputBox"
               id="event-name"
               type="text"
               value={eventName}
@@ -27,9 +28,9 @@ const EventSearchFilter = () => {
             />
           </div>
           <div>
-            <label className="block text-blue-800 pl-1">Nonprofit</label>
+            <label className="inputLabel">Nonprofit</label>
             <input
-              className="bg-gray-200 appearance-none rounded pl-1"
+              className="inputBox"
               id="nonprofit"
               type="text"
               value={nonprofitName}
@@ -41,11 +42,11 @@ const EventSearchFilter = () => {
         </div>
 
         {/* Input Row 2 */}
-        <div className="flex flex-row justify-between">
+        <div className="inputRow">
           <div>
-            <label className="block text-blue-800 pl-1">Start Date</label>
+            <label className="inputLabel">Start Date</label>
             <input
-              className="bg-gray-200 appearance-none rounded pl-1"
+              className="inputBox"
               id="start-date"
               type="text"
               value={eventStartDate}
@@ -55,9 +56,9 @@ const EventSearchFilter = () => {
             />
           </div>
           <div>
-            <label className="block text-blue-800 pl-1">End Date</label>
+            <label className="inputLabel">End Date</label>
             <input
-              className="bg-gray-200 appearance-none rounded pl-1"
+              className="inputBox"
               id="end-date"
               type="text"
               value={eventEndDate}
@@ -67,10 +68,8 @@ const EventSearchFilter = () => {
             />
           </div>
         </div>
-        <div className="flex flex-row justify-center pt-2">
-          <button
-            className="shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold py-1 px-4 rounded"
-            type="button">
+        <div className="buttonContainer">
+          <button className="searchButton" type="button">
             Search
           </button>
         </div>

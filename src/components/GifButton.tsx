@@ -15,7 +15,7 @@ type Props = {
 const GifButton = (props: Props) => {
   const { caption, image } = props;
   return (
-    <div className="buttonContainer">
+    <div className="gifButtonContainer">
       {/* Image */}
       <img className="gifImage" src={image} alt={caption} />
 
