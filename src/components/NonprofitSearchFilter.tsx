@@ -1,5 +1,6 @@
 // React imports
 import React, { useState } from 'react';
+import './NonprofitSearchFilter.scss';
 
 // This functional component is the filter for searching events
 // Layout:
@@ -8,17 +9,15 @@ const NonprofitSearchFilter = () => {
   const [eventName, setEventName] = useState('');
 
   return (
-    <div className="bg-blue-300 rounded-lg mx-2 my-2 px-4 pb-2 shadow-lg w-104 self-center">
+    <div className="searchFilterContainer">
       {/* Form Start */}
       <form>
         {/* Input Row 1 */}
-        <div className="flex flex-row w-full justify-center pb-1">
+        <div className="inputContainer">
           <div>
-            <label className="flex justify-center w-full font-bold text-xl text-blue-800 pl-1">
-              Nonprofit Search
-            </label>
+            <label className="nonprofitText">Nonprofit Search</label>
             <input
-              className="bg-gray-200 appearance-none focus:outline-none rounded pl-1"
+              className="inputRow"
               id="event-name"
               type="text"
               value={eventName}
@@ -30,10 +29,8 @@ const NonprofitSearchFilter = () => {
         </div>
 
         {/* Submit */}
-        <div className="flex flex-row justify-center pt-2">
-          <button
-            className="shadow bg-blue-700 hover:bg-blue-600 focus:outline-none text-white font-bold py-1 px-4 rounded"
-            type="button">
+        <div className="searchButtonContainer">
+          <button className="searchButton" type="button">
             Search
           </button>
         </div>
