@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Navbar from '../components/Navbar';
-import AuthWindow from '../components/AuthWindow';
+import Navbar from '../../components/Navbar/Navbar';
+import AuthWindow from '../../components/AuthWindow/AuthWindow';
 import './AuthPage.scss';
 
 // Layout

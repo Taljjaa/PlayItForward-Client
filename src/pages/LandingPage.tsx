@@ -2,8 +2,8 @@
 import React from 'react';
 
 // Custom Imports
-import Navbar from '../components/Navbar';
-import EventCardCollection from '../components/EventCardCollection';
+import Navbar from '../components/Navbar/Navbar';
+import EventCardCollection from '../components/Event/EventCardCollection';
 import trophyGif from '../media/animations/trophy-rotate.gif';
 import './LandingPage.scss';
 // This functional component renders the landing page

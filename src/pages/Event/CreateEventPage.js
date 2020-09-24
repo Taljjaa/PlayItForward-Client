@@ -21,8 +21,8 @@ import {
   ComboboxInput,
 } from '@reach/combobox';
 import '@reach/combobox/styles.css';
-import UploadFile from '../components/UploadFile';
-import Navbar from '../components/Navbar';
+import UploadFile from '../../components/UploadFile/UploadFile';
+import Navbar from '../../components/Navbar/Navbar';
 import { useHistory } from 'react-router';
 
 const CREATE_EVENT = gql`

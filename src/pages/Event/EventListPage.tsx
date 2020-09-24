@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 
 // Custom Imports
-import Navbar from '../components/Navbar';
-import EventSearchFilter from '../components/EventSearchFilter';
-import EventCardCollection from '../components/EventCardCollection';
+import Navbar from '../../components/Navbar/Navbar';
+import EventSearchFilter from '../../components/Event/EventSearchFilter';
+import EventCardCollection from '../../components/Event/EventCardCollection';
 import './EventListPage.scss';
 
 // This is a functional component that displays the event list page

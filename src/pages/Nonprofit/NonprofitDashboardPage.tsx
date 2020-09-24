@@ -1,10 +1,10 @@
 import React from 'react';
-import NavBar from '../components/Navbar';
+import NavBar from '../../components/Navbar/Navbar';
 import pifLogo from '../media/images/pif-logo.png';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { Link } from 'react-router-dom';
-import { getNonprofit } from '../generated/getNonprofit';
+import { getNonprofit } from '../../generated/getNonprofit';
 
 const GET_NONPROFIT = gql`
   query getNonprofit($id: Int!) {

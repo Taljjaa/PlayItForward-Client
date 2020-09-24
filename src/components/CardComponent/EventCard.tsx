@@ -1,6 +1,6 @@
 import React from 'react';
 // Custom Imports types, generated from graphql schema
-import { getEvents_getEvents } from '../generated/getEvents';
+import { getEvents_getEvents } from '../../generated/getEvents';
 import './CardComponent.scss';
 
 // This is a re-usable Card component for event info

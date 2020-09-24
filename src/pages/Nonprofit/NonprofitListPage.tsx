@@ -2,9 +2,9 @@
 import React from 'react';
 
 // Custom imports
-import Navbar from '../components/Navbar';
-import NonprofitSearchFilter from '../components/NonprofitSearchFilter';
-import NonprofitCardCollection from '../components/NonprofitCardCollection';
+import Navbar from '../../components/Navbar/Navbar';
+import NonprofitSearchFilter from '../../components/Nonprofit/NonprofitSearchFilter';
+import NonprofitCardCollection from '../../components/Nonprofit/NonprofitCardCollection';
 import './NonprofitListPage.scss';
 
 // Function component for the nonprofit list page

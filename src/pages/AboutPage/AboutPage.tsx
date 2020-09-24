@@ -2,10 +2,10 @@
 import React from 'react';
 
 // Custom imports
-import Navbar from '../components/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 import newsImage from '../media/animations/news-bird.gif';
 import contributeImage from '../media/animations/contribute-piggy.gif';
-import GifButton from '../components/GifButton';
+import GifButton from '../../components/GifButton';
 import './AboutPage.scss';
 
 // Function component that displays general info about the program

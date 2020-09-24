@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import NavbarOptions from './NavbarOptions';
 import DropdownOptions from './DropdownOptions';
-import './NavBar.scss';
+import './Navbar.scss';
 
 // Header Links, Collapsible Menu Options
 const Navbar = () => {

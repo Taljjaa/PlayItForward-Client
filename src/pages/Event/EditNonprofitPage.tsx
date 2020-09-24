@@ -1,6 +1,6 @@
-import React from "react";
-import NavBar from "../components/Navbar";
-import pifLogo from "../media/images/pif-logo.png";
+import React from 'react';
+import NavBar from '../../components/Navbar/Navbar';
+import pifLogo from '../media/images/pif-logo.png';
 
 const EditNonprofitPage = () => {
   return (

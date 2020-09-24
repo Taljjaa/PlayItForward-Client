@@ -1,8 +1,8 @@
 import React from 'react';
-import NavBar from '../components/Navbar';
+import NavBar from '../../components/Navbar/Navbar';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { getVolunteer } from '../generated/getVolunteer';
+import { getVolunteer } from '../../generated/getVolunteer';
 
 //graphql query object returns logged in volunteer based on localStorage
 const GET_VOLUNTEER = gql`

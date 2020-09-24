@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { useForm } from 'react-hook-form';
-import UploadFile from './UploadFile';
+import UploadFile from '../UploadFile/UploadFile';
 import './AuthDialogueBox.scss';
 
 // Type definitions

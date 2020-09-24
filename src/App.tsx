@@ -4,14 +4,14 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Custom Imports
 import LandingPage from './pages/LandingPage';
-import EventListPage from './pages/EventListPage';
-import NonprofitListPage from './pages/NonprofitListPage';
-import AboutPage from './pages/AboutPage';
-import AuthPage from './pages/AuthPage';
-import NonprofitDashboardPage from './pages/NonprofitDashboardPage';
-import VolunteerDashboardPage from './pages/VolunteerDashboardPage';
-import CreateEventPage from './pages/CreateEventPage';
-import EditNonprofitPage from './pages/EditNonprofitPage';
+import EventListPage from './pages/Event/EventListPage';
+import NonprofitListPage from './pages/Nonprofit/NonprofitListPage';
+import AboutPage from './pages/AboutPage/AboutPage';
+import AuthPage from './pages/AuthPage/AuthPage';
+import NonprofitDashboardPage from './pages/Nonprofit/NonprofitDashboardPage';
+import VolunteerDashboardPage from './pages/Volunteer/VolunteerDashboardPage';
+import CreateEventPage from './pages/Event/CreateEventPage';
+import EditNonprofitPage from './pages/Event/EditNonprofitPage';
 
 //Imports from Apollo
 import { ApolloClient } from 'apollo-client';
